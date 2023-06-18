@@ -46,7 +46,7 @@ int main(){
 
     //Q.14:
     ///*
-    cout<<"nth value: "
+    cout<<"nth value: ";
     cin >> counter;
     cout << fibbi(counter)<<endl;
     cout << fibbi()<<endl;
