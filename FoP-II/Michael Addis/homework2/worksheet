@@ -1,0 +1,69 @@
+#include <iostream>
+using namespace std;
+
+void desendnumber(int &num1, int &num2, int &num3)
+{
+    int temp, med;
+    if (num1 >= num2 && num1 >= num3)
+    {
+        if (num3 > num2)
+        {
+            temp = num2;
+            num2 = num3;
+            num3 = temp;
+        }
+    }
+    else if (num1 >= num2 && num1 <= num3)
+    {
+        temp = num1;
+        num1 = num3;
+        num3 = temp;
+
+        temp = num2;
+        num2 = num3;
+        num3 = temp;
+    }
+    else if (num1 <= num2 && num1 <= num3)
+    {
+        if (num3 > num2)
+        {
+            temp = num2;
+            num2 = num3;
+            num3 = temp;
+        }
+        temp = num1;
+        num1 = num2;
+        num2 = temp;
+
+        temp = num2;
+        num2 = num3;
+        num3 = temp;
+    }
+    else
+
+    {
+        temp = num1;
+        num1 = num2;
+        num2 = temp;
+    }
+}
+
+int main()
+{
+    int a = 1;
+    int b = 3;
+    int c = 2;
+
+    cout << "The value of numbers before swapping:" << endl;
+    cout << "\t" << a;
+    cout << "\t" << b;
+    cout << "\t" << c << endl;
+
+    desendnumber(a, b, c);
+    cout << "The value of number after swapping" << endl;
+    cout << "\t" << a;
+    cout << "\t" << b;
+    cout << "\t" << c << endl;
+
+    return 0;
+}
