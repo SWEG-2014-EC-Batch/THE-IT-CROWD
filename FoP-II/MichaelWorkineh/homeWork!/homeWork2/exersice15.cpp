@@ -13,9 +13,9 @@ int main(){
     cin>>num3;
     if(num1!=0){
         scale(num1,num2,num3);
-        cout<<"the old value of number 2 is "<<num3<<endl;
+        cout<<"the old value of number 2 is "<<num2/num1<<endl;
         cout<<"the new  value number2 is "<<num2<<endl;
-        cout<<"the old value of number 3 is "<<num3<<endl;
+        cout<<"the old value of number 3 is "<<num2/num1<<endl;
         cout<<"the new  value number3 is "<<num3<<endl;
         (scalechecker==0)?cout<<"they have been scaled down"<<endl:cout<<"they have been scaled up"<<endl;
     }
