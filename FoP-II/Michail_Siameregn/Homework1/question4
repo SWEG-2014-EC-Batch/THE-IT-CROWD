@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+double getproduct(int num1, double num2 );
+int main()
+{
+   int firstnum;
+   double secondnum;
+   double product;
+   cout<< "first number";
+   cin>> firstnum;
+   cout<< "enter second number";
+   cin>>secondnum;
+   product = getproduct(firstnum,secondnum);
+   cout<<product;
+}
+double getProduct(int num1, double num2)
+{
+    return num1 * num2;
+}
