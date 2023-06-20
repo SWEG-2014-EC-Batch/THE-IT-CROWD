@@ -1,0 +1,28 @@
+#include<iostream>
+
+using namespace std;
+
+#include<string>
+#include<math.h>
+double cal(double n1, double n2, double &answer );
+double cal(double n1, double n2, double *ans );
+int main()
+{
+    double n1,n2,quotient;
+cout<< "enter number 1: ";
+cin>>n1;
+cout<<"enter another number: ";
+cin>>n2;
+cal(n1, n2, &quotient);
+cout<< "the result is: " << quotient<<endl;
+cal(n1, n2, quotient);
+cout<< "the result is: " << quotient;
+}
+double cal(double n1, double n2, double &answer )
+{
+    answer=n1/n2;
+}
+double cal(double n1, double n2, double *ans)
+{
+    *ans=n1/n2+1;
+}
