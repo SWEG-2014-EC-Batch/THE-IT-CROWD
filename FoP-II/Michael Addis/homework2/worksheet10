@@ -1,0 +1,84 @@
+#include <iostream>
+using namespace std;
+#include <cstdlib>
+
+void readLength(double &feet, double &inches, int &convert)
+{
+    if (convert == 1)
+    {
+        cout << "Enter the length in feet?" << endl;
+        cin >> feet;
+
+        cout << "Enter the length in inches?" << endl;
+        cin >> inches;
+    }
+    if (convert == 2)
+    {
+        cout << "Enter the length in meter?" << endl;
+        cin >> feet;
+
+        cout << "Enter the length in inches?" << endl;
+        cin >> inches;
+    }
+}
+
+void changeUnit(double &meter, double &centimeter, int convert)
+{
+    if (convert == 1)
+    {
+        meter *= 0.3048;
+        centimeter *= 2.54;
+    }
+    if (convert == 2)
+    {
+        meter /= 0.3048;
+        centimeter /= 2.54;
+    }
+}
+
+void displayLength(double &meter, double &centiM, int convert)
+{
+    if (convert == 1)
+    {
+        cout << "Length :"s << meter << " meters and " << centiM << " centimeters." << endl;
+    }
+    if (convert == 2)
+    {
+        cout << "Length :"s << meter << " foot and " << centiM << " inches." << endl;
+    }
+}
+
+int main()
+{
+    double feetlength;
+    double inchelength;
+    char choice = 'Y';
+    int convertchoice;
+
+    do
+    {
+    first:
+        cout << "convert from feet and inches to meters and centimeters enter  1 " << endl;
+        cout << "convert from meters and inches to feet and inchies enter      2 " << endl;
+        cin >> convertchoice;
+
+        if (convertchoice != 1 && convertchoice != 2)
+        {
+            cout << "invalid input" << endl;
+            cout << "enter your choice again?" << endl;
+            goto first;
+        }
+
+        readLength(feetlength, inchelength, convertchoice);
+        changeUnit(feetlength, inchelength, convertchoice);
+        displayLength(feetlength, inchelength, convertchoice);
+
+        cout << "\n";
+        cout << "do you want to convert unit again?(y/n)";
+        cin >> choice;
+        system("clear");
+
+    } while (choice == 'Y' || choice == 'y');
+
+    return 0;
+}

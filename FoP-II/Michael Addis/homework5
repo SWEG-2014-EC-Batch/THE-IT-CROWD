@@ -1,0 +1,19 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+double formula(double num1, double num2)
+{
+    double answer = pow(num1, 3) + sqrt(num2);
+    return answer;
+}
+int main()
+{
+    double a, b;
+    double result;
+    cin >> a >> b;
+
+    result = formula(a, b);
+
+    cout << "the result of the expressio is " << result;
+}

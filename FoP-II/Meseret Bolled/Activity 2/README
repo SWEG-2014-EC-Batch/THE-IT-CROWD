@@ -1,0 +1,13 @@
+/question 9
+This code takes in 3 integer inputs from the user and modifies their values using pass-by-reference variables.
+It includes two functions, swapValues to swap the values of two integers and
+modifyValues to re-assign the variables in descending order of magnitude. 
+The modifyValues function first output the original values of the three input integers and then proceeds to swap the values until they are ordered from greatest to smallest. If the value of a is less than b, `swapValues` is called to swap their positions. The same process is repeated for `a` and `c` as well as `b` and `c`. 
+  Lastly, the new values are outputted, and the program ends.
+/question 10
+This program is designed to convert lengths from feet and inches to meters and centimeters or vice versa. The program uses three functions to accomplish this: one for input, one or more for calculating, and one for output.
+
+When the program runs, the user is prompted with a menu to select which type of conversion they want to perform. They can select either option 1 to convert from feet and inches to meters and centimeters or option 2 to convert from meters and centimeters to feet and inches.
+
+Once the user makes their selection, they are then prompted to input the length to be converted in the appropriate units. The program then calculates the equivalent length in the other units using appropriate conversion factors. The results are then displayed to the user.
+

@@ -1,0 +1,94 @@
+#include <iostream>
+// #include<cassert>
+#include <cstdlib>
+using namespace std;
+
+void inputTime(int &hour, int &minute)
+{
+    cout << "enter the hour and time respectivley?" << endl;
+    int a, b;
+    cin >> a >> b;
+    hour = a;
+    minute = b;
+}
+
+void convertTime(int &H, int &M, char &c)
+{
+
+    // assert(0<H<=24 && 0<M<=60);
+
+    if (H == 0)
+    {
+        if (M >= 0 && M <= 56)
+        {
+            H = H + 12;
+            c = 'A';
+        }
+        else
+            cout << "you have input invalid input" << endl;
+    }
+
+    else if (H >= 1 && H <= 11)
+    {
+        if (M >= 0 && M <= 56)
+        {
+            c = 'A';
+        }
+        else
+            cout << "you have input invalid input" << endl;
+    }
+    else if (H == 12)
+    {
+        if (M >= 0 && M <= 56)
+        {
+            c = 'P';
+        }
+        else
+            cout << "you have input invalid input" << endl;
+    }
+    else if (H >= 13 && H <= 23)
+    {
+        if (M >= 0 && M <= 56)
+        {
+            H = (H - 12);
+            c = 'p';
+        }
+        else
+            cout << "you have input invalid input" << endl;
+    }
+    else
+        cout << "you have input invalid input" << endl;
+}
+
+void outputTime(int &h, int &m, char &c)
+{
+    cout << h << " : " << m << " " << c << endl;
+}
+
+int main()
+{
+
+    int hour = 15;
+    int minute = 56;
+    char AMPM = 'A';
+    char choice;
+
+    do
+    {
+        inputTime(hour, minute);
+
+        convertTime(hour, minute, AMPM);
+
+        cout << hour;
+        cout << "when the time is  converted to 12 hour clock ";
+        outputTime(hour, minute, AMPM);
+        cout << endl;
+
+        cout << "do you want to convert time again ? (enter Y/N) " << endl;
+        cin >> choice;
+        system("clear");
+
+    } while (choice == 'Y' || choice == 'y');
+
+    return 0;
+}

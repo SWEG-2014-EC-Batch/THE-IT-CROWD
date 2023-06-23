@@ -1,0 +1,25 @@
+#include <iostream>
+
+using namespace std;
+
+double getProduct(int num1, double num2); // prototype of the function
+int main()
+{
+    int firstnum;
+    double secondnum, product;
+
+    cout << "enter the numbmers respectively" << endl;
+    cin >> firstnum;
+    cin >> secondnum;
+
+    product = getProduct(firstnum, secondnum);
+    cout << "the roduct of the two numbers is: " << product;
+
+    return 0;
+}
+
+double getProduct(int num1, double num2)
+{
+
+    return num1 * num2;
+}

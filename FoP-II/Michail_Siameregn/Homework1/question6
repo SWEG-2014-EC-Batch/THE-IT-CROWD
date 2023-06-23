@@ -1,0 +1,17 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+double hypotenus(double side1,double side2);
+int main()
+{
+   double side1, side2;
+   cout<< "enter side 1";
+   cin>>side1;
+   cout<<"enter side 2";
+   cin>> side2;
+   cout<< "the hypotenus is "<< hypotenus(side1, side2);
+}
+double hypotenus(double side1, double side2)
+{
+   return pow(pow(side1,2)+pow(side2,2),0.5);
+}
