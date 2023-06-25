@@ -69,4 +69,3 @@ This question involves checking if an integer is a prime number or not.
   - true if `tester` remains zero (no factors found).
   - false if `tester` has a different value (a factor was found).
 
-Please note that the given information has been rephrased while ensuring that it conveys the same meaning.
