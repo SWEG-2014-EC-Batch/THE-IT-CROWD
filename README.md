@@ -8,6 +8,8 @@ Our group is focused on Technology. We believe that in time management, and we a
  2.Automated Airline Reservation System: Assigning Seats in First Class and Economy with Boarding Pass and Passenger Information Input
  3.Rainfall Analysis Program for Addis Ababa:Comparing Actual and Average Monthly Rainfall with Table and Bar Graph Representation.
  4.Oven Temperature Substitution: Finding the Next Largest and Smallest Temperature without Digits 1, 4, or 7
+ https://github.com/SWEG-2015-EC-Batch/Shadow-coders/tree/main/FoP-I/project/project1
  5.hourglass pattern made up of the letters from H to A
  6.hollow diamond shape pattern with numbers.
+ https://github.com/SWEG-2015-EC-Batch/Shadow-coders/tree/main/FoP-I/project/project1
       
