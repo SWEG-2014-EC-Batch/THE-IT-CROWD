@@ -4,7 +4,7 @@ Welcome to IT CROWD, a dynamic repository powered by a talented group of second-
 
 ## Table of Contents
 
-1. Introduction
+1. {Introduction](#introduction)
 2. [Overview](#overview)
 3. [Folder Structure](#folder-structure)
 4. [Contributing and Usage](#contributing-and-usage)
