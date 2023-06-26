@@ -19,7 +19,11 @@ Our group is focused on Technology. We believe that in time management, and we a
 
 
 ## Overview
+ Group Repository is a collaborative platform for our group to collectively work on C++ programming projects, assignments, and learning resources. This repository serves as a central hub where we can share our code, exchange knowledge, and support each other's growth as programmers.
 
+In this repository, we aim to enhance our understanding of C++ programming, develop practical programming skills, and engage in collaborative coding projects. By actively participating in this group, we can leverage the collective expertise and creativity of our members to tackle programming challenges and build robust C++ applications.
+
+Our goals include fostering a collaborative environment, sharing learning resources, showcasing our projects, and providing community support. Together, we can create a vibrant and productive learning space where we can explore C++ programming concepts, collaborate on exciting projects, and expand our programming capabilities.
 
 ## Folder Structure
 
@@ -40,7 +44,11 @@ Some of the projects we have done,you can find them on the group
 
 
 ## Future Plans and Goals
-
+1. Expand Project Portfolio: We aim to expand our project portfolio by taking on more challenging and diverse projects. These projects will allow us to apply our C++ skills to real-world scenarios, explore new technologies, and develop complete applications or systems.
+2. Establish Code Review Practices: Implementing code review practices will be an important aspect of our group's growth. We plan to encourage regular code reviews, where members can provide constructive feedback, suggest improvements, and ensure the quality and consistency of our codebase. This practice will help us learn from each other, identify potential bugs or vulnerabilities, and enhance our coding standards.
+3.  Create Learning Resources: We aim to develop and share learning resources tailored to our group's needs. This can include tutorials, guides, cheat sheets, and video tutorials covering various C++ topics. By creating comprehensive learning materials, we can support each other's learning and provide valuable references for future members.
+4.  Conduct Code Refactoring Sessions: To improve our coding skills and promote code quality, we plan to conduct code refactoring sessions. During these sessions, we can collectively review and refactor existing code from projects or assignments. This process will help us identify areas for improvement, learn different coding techniques, and enhance the overall maintainability and readability of our codebase.
+5.  Organize Study Groups: We can organize study groups within the repository to focus on specific C++ topics or areas of interest. These study groups can meet regularly to discuss concepts, share resources, and work on mini-projects related to the chosen topic. This collaborative learning approach will enable us to dive deeper into C++ and explore advanced concepts together.
 
 ## Resources
 
