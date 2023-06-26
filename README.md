@@ -29,7 +29,7 @@ Our goals include fostering a collaborative environment, sharing learning resour
 Main folders included in our repositry includes:
 
 1.FoP-I(Fundamentals of programming 1)
-  Includes subfolders for our past semester Activities, Homeworks and Projects individually commited by our team members.
+  Includes subfolders of our past semester Activities, Homeworks and Projects individually commited by our team members.
   The subfolders included are:
     Meseret Bolled
     Michail Addis
