@@ -31,6 +31,7 @@ Our goals include fostering a collaborative environment, sharing learning resour
 ## Contributing and Usage
 
 
+
 ## Group Projects
 Some of the projects we have done,you can find them on the group
  1.Generating Pythagorean Triples: Brute-Force Computing with Nested Loops.
@@ -52,6 +53,33 @@ Some of the projects we have done,you can find them on the group
 5.  Organize Study Groups: We can organize study groups within the repository to focus on specific C++ topics or areas of interest. These study groups can meet regularly to discuss concepts, share resources, and work on mini-projects related to the chosen topic. This collaborative learning approach will enable us to dive deeper into C++ and explore advanced concepts together.
 
 ## Resources
+ ## C++ Resources
+
+Here are some valuable resources to enhance your C++ programming skills:
+
+# Books
+
+- [The C++ Programming Language](https://www.amazon.com/C-Programming-Language-4th/dp/0321563840) by Bjarne Stroustrup: A comprehensive guide to C++ programming written by the creator of C++ itself.
+- [Effective Modern C++](https://www.amazon.com/Effective-Modern-Specific-Ways-Improve/dp/1491903996) by Scott Meyers: Provides practical advice on modern C++ features and effective programming techniques.
+- [C++ Primer](https://www.amazon.com/C++-Primer-Stanley-B-Lippman/dp/0321714113) by Stanley B. Lippman, Josée Lajoie, and Barbara E. Moo: A beginner-friendly and widely recommended book for learning C++ programming.
+
+# Websites
+
+- [cplusplus.com](http://www.cplusplus.com/): Offers tutorials, references, and a forum for C++ developers.
+- [cppreference.com](https://en.cppreference.com/): Provides extensive documentation on the C++ programming language and the Standard Library.
+- [LearnCpp.com](https://www.learncpp.com/): Offers a free online tutorial series for beginners to learn C++ programming step-by-step.
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/c%2b%2b): A popular question and answer platform where you can find solutions to common C++ programming problems.
+
+# Videos
+
+- [TheCherno C++ YouTube Channel](https://www.youtube.com/user/TheCherno): A YouTube channel featuring C++ tutorials, game development, and programming concepts.
+- [C++ Weekly by Jason Turner](https://www.youtube.com/playlist?list=PLs3KjaCtOwSZ2tbuV1hx8Xz-rFZTan2J1): A video series covering various aspects of modern C++ programming.
+- [CppCon YouTube Channel](https://www.youtube.com/user/CppCon): Contains recordings of talks and presentations from the CppCon conference, covering a wide range of C++ topics.
+
+Feel free to explore these resources to deepen your understanding of C++ and improve your programming skills.
+
+Please note that the availability and accessibility of these resources may vary, and it's recommended to check their respective websites for the latest information and updates.
+
 
 
 ## Contact Information
