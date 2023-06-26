@@ -26,7 +26,32 @@ In this repository, we aim to enhance our understanding of C++ programming, deve
 Our goals include fostering a collaborative environment, sharing learning resources, showcasing our projects, and providing community support. Together, we can create a vibrant and productive learning space where we can explore C++ programming concepts, collaborate on exciting projects, and expand our programming capabilities.
 
 ## Folder Structure
+Main folders included in our repositry includes:
 
+1.FoP-I(Fundamentals of programming 1)
+  Includes subfolders for our past semester Activities, Homeworks and Projects individually commited by our team members.
+  The subfolders included are:
+    Meseret Bolled
+    Michail Addis
+    Michael Getu
+    Michail Siameregn
+    Mikiyas Alemayehu Mekonen
+    Mikiyas Alemayehu Gebrewold and
+    PROJECT
+        -Project-I
+        -Project-II
+    Here you will find every worksheet questions, classroom activites, Homeworks and Projects in each subfolders except the PROJECT folder where it has two sections Project-I and Project-II.
+    
+
+2.FoPII(Fundamentals of programming 2)
+  This folder inludes subfolders where our current Activities, Homeworks and Projects are commited individually by our team members.
+    The Subfolders included are:
+         Meseret Bolled
+         Michail Addis
+         Michael Getu
+         Michail_Siameregn
+         MichaelWorkineh
+    Currently each subfolders are sectioned with Homework 1, Homework 2 and Class Activities.
 
 ## Contributing and Usage
  # Contributing
@@ -93,4 +118,32 @@ Please note that the availability and accessibility of these resources may vary,
 
 
 ## Contact Information
-
+Here you will find the contact information of each group members.
+Meseret Bolled
+    Email:meseretbolled@gmail.com 
+    Telegram:@Asacrifice
+    GitHub:https://github.com/Meseretbolled
+Michail Addis
+    Email:
+    Telegram:@Riley_freeman47
+    GitHub:
+Michael Getu
+    Email:michaelgetu21@gmail.com
+    Telegram:@Michael_Getu
+    GitHub:https://github.com/MichaelGetu-git
+Michail_Siameregn
+    Email:michailsiameregn600@gmail.com
+    Telegram:@mikos17
+    GitHub:https://github.com/michailS17
+MichaelWorkineh
+    Email:micwor96@gmail.com
+    Telegram:@MicWor
+    GitHub:https://github.com/mugFace
+Mikiyas Alemayehu Mekonen
+    Email:
+    Telegram:
+    GitHub:
+Mikiyas Alemayehu Gebrewold
+    Email:
+    Telegram:
+    GitHub:
