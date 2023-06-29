@@ -1,0 +1,69 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+struct person {
+    char name[20];
+    char gender;
+    int age;
+    double weight;
+    double height;
+    double BMI;
+};
+
+// Calculate BMI function
+void CalculateBMI(person people[], int b) {
+    for (int i = 0; i < b; i++) {
+        people[i].BMI = (people[i].weight) / (pow(people[i].height, 2));
+    }
+}
+
+// Display function
+void displayBMI(person people[], int b) {
+    for (int i = 0; i < b; i++) {
+        cout << "NAME: " << people[i].name << "\n";
+        cout << "GENDER: " << people[i].gender << "\n";
+        cout << "AGE: " << people[i].age << "\n";
+        cout << "HEIGHT: " << people[i].height << "\n";
+        cout << "WEIGHT: " << people[i].weight << "\n";
+
+        if (people[i].BMI < 18.5) {
+            cout << "You are underweight. Eat more.\n";
+        } else if (people[i].BMI >= 18.5 && people[i].BMI <= 24.5) {
+            cout << "You are healthy.\n";
+        } else {
+            cout << "Men, you are in trouble. Eat your vegetables.\n";
+        }
+    }
+}
+
+// Function to get input values of height, name, weight
+void getArray(person people[], int b) {
+    for (int i = 0; i < b; i++) {
+        cout << "Enter your name: ";
+        cin.ignore();
+        cin.getline(people[i].name, 20);
+
+        cout << "Enter gender: ";
+        cin >> people[i].gender;
+
+        cout << "Enter age, weight, and height respectively: ";
+        cin >> people[i].age;
+        cin >> people[i].weight;
+        cin >> people[i].height;
+        cin.ignore();
+    }
+}
+
+int main() {
+    int n;
+    cout << "How many times do you want to compute BMI? ";
+    cin >> n;
+
+    person people[n];
+    getArray(people, n);
+    CalculateBMI(people, n);
+    displayBMI(people, n);
+
+    return 0;
+}
