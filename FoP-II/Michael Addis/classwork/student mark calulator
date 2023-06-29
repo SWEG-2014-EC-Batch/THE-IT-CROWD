@@ -1,0 +1,70 @@
+#include <iostream>
+using namespace std;
+
+struct student
+{
+    int id;
+    char name[20];
+    int testMark[3];
+    int finalMark;
+    int total;
+};
+
+void getinfo(student names[], int n)
+{
+
+    for (int i = 0; i < n; i++)
+    {
+        cout << "enter id for student " << i + 1 << endl;
+        cin >> names[i].id;
+        cin.ignore();
+
+        cout << "enter student name:" << endl;
+        cin.getline(names[i].name, 20);
+
+        cout << "enter the 3 mid exams :" << endl;
+        names[i].total = 0;
+
+        for (int j = 0; j < 3; j++)
+        {
+            cout << "Mid-exam " << j + 1;
+            cin >> names[i].testMark[j];
+            cout << endl;
+            names[i].total += names[i].testMark[j];
+        }
+        system("clear");
+    }
+};
+void getmarks(student names[], int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        cout << names[i].name << "\t\t\t" << names[i].id << "\t\t" << names[i].testMark[0] << "\t" << names[i].testMark[1] << "\t" << names[i].testMark[2] << "\t\t" << names[i].total << endl;
+    }
+};
+
+int main()
+{
+       cout<<"Calculate the final mark of students: "<<"\n\n\n";
+       cout<<"How many students are in the class?"<<"\n";
+       int n;
+       cin>>n;
+
+     student mike[n];
+     getinfo(mike, n);
+
+    cout << "Name"
+         << "\t\t\t"
+         << "ID"
+         << "\t\t"
+         << "mid-1"
+         << "\t"
+         << "mid-2"
+         << "\t"
+         << "mid-3"
+         << "\t\t"
+         << "tottal"
+         << "\n\n";
+    getmarks(mike,n);
+    return 0;
+}
