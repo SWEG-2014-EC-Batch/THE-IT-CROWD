@@ -28,7 +28,7 @@ Our goals include fostering a collaborative environment, sharing learning resour
 ## Folder Structure
 Main folders included in our repositry includes:
 
-1.FoP-I(Fundamentals of programming 1)
+1. FoP-I(Fundamentals of programming 1)
   Includes subfolders of our past semester Activities, Homeworks and Projects individually commited by our team members.
   The subfolders included are:
     Meseret Bolled
@@ -43,7 +43,7 @@ Main folders included in our repositry includes:
     Here you will find every worksheet questions, classroom activites, Homeworks and Projects in each subfolders except the PROJECT folder where it has two sections Project-I and Project-II.
     
 
-2.FoPII(Fundamentals of programming 2)
+2. FoPII(Fundamentals of programming 2)
   This folder inludes subfolders where our current Activities, Homeworks and Projects are commited individually by our team members.
     The Subfolders included are:
          Meseret Bolled
