@@ -119,31 +119,31 @@ Please note that the availability and accessibility of these resources may vary,
 
 ## Contact Information
 Here you will find the contact information of each group members.
-Meseret Bolled
-    Email:meseretbolled@gmail.com 
-    Telegram:@Asacrifice
-    GitHub:https://github.com/Meseretbolled
-Michail Addis
-    Email:
-    Telegram:@Riley_freeman47
-    GitHub:
-Michael Getu
-    Email:michaelgetu21@gmail.com
-    Telegram:@Michael_Getu
-    GitHub:https://github.com/MichaelGetu-git
-Michail_Siameregn
-    Email:michailsiameregn600@gmail.com
-    Telegram:@mikos17
-    GitHub:https://github.com/michailS17
-MichaelWorkineh
-    Email:micwor96@gmail.com
-    Telegram:@MicWor
-    GitHub:https://github.com/mugFace
-Mikiyas Alemayehu Mekonen
-    Email:
-    Telegram:
-    GitHub:
-Mikiyas Alemayehu Gebrewold
-    Email:
-    Telegram:
-    GitHub:
+1. Meseret Bolled
+   - Email:meseretbolled@gmail.com 
+   - Telegram:@Asacrifice
+   - GitHub:https://github.com/Meseretbolled
+2. Michail Addis
+    - Email:
+    - Telegram:@Riley_freeman47
+    - GitHub:
+3. Michael Getu
+    - Email:michaelgetu21@gmail.com
+    - Telegram:@Michael_Getu
+    - GitHub:https://github.com/MichaelGetu-git
+4. Michail_Siameregn
+    - Email:michailsiameregn600@gmail.com
+    - Telegram:@mikos17
+    - GitHub:https://github.com/michailS17
+5. MichaelWorkineh
+    - Email:micwor96@gmail.com
+    - Telegram:@MicWor
+    - GitHub:https://github.com/mugFace
+6. Mikiyas Alemayehu Mekonen
+    - Email:
+    - Telegram:
+    - GitHub:
+7. Mikiyas Alemayehu Gebrewold
+    - Email:
+    - Telegram:
+    - GitHub:
