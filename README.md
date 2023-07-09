@@ -124,9 +124,9 @@ Here you will find the contact information of each group members.
    - Telegram:@Asacrifice
    - GitHub:https://github.com/Meseretbolled
 2. Michail Addis
-    - Email:
+    - Email: michaeladdis78@gmail.com
     - Telegram:@Riley_freeman47
-    - GitHub:
+    - GitHub: 
 3. Michael Getu
     - Email:michaelgetu21@gmail.com
     - Telegram:@Michael_Getu
