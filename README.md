@@ -126,7 +126,7 @@ Here you will find the contact information of each group members.
 2. Michail Addis
     - Email: michaeladdis78@gmail.com
     - Telegram:@Riley_freeman47
-    - GitHub: 
+    - GitHub: https://github.com/mikeaddis1265
 3. Michael Getu
     - Email:michaelgetu21@gmail.com
     - Telegram:@Michael_Getu
