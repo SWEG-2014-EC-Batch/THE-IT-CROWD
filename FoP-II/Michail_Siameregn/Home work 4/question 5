@@ -1,0 +1,30 @@
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int main() {
+    ifstream file("number_groups.txt");
+    if (file.is_open()) {
+        int count;
+        
+        while (file >> count) {
+            int sum = 0;
+            
+            for (int i = 0; i < count; i++) {
+                int num;
+                file >> num;
+                sum += num;
+            }
+            
+            double average = static_cast<double>(sum) / count;
+            cout << "Average of group with " << count << " numbers: " << average << endl;
+        }
+        
+        file.close();
+    } else {
+        cout << "Unable to open file." << endl;
+    }
+    
+    return 0;
+}
