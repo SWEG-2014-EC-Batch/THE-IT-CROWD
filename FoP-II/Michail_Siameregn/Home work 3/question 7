@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+struct Student {
+    char name[20];
+    char sex;
+    int age;
+};
+
+void InputData(Student& student) {
+    cout << "Enter name: ";
+    cin >> student.name;
+
+    cout << "Enter sex (M/F): ";
+    cin >> student.sex;
+
+    cout << "Enter age: ";
+    cin >> student.age;
+}
+
+void DisplayData(const Student& student) {
+    cout << "Name: " << student.name << endl;
+    cout << "Sex: " << student.sex << endl;
+    cout << "Age: " << student.age << endl;
+}
+
+int main() {
+    Student student;
+
+    InputData(student);
+    cout << "------------------------------------" << endl;
+    DisplayData(student);
+
+    return 0;
+}
