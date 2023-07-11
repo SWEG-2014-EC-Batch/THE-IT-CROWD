@@ -1,0 +1,83 @@
+Callaway G 6.00 40
+Hanson P 5.00 48
+lasard D 6.50 35
+Stillman W 8.00 50
+
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+
+using namespace std;
+
+struct Employee {
+    std::string name;
+    double payRate;
+    int hoursWorked;
+    double regularPay;
+    double overtimePay;
+    double grossPay;
+};
+
+void calculatePay(Employee& employee) {
+    if (employee.hoursWorked <= 40) {
+        employee.regularPay = employee.payRate * employee.hoursWorked;
+        employee.overtimePay = 0.0;
+    } else {
+        employee.regularPay = employee.payRate * 40;
+        employee.overtimePay = (employee.payRate * 1.5) * (employee.hoursWorked - 40);
+    }
+
+    employee.grossPay = employee.regularPay + employee.overtimePay;
+}
+
+int main() {
+    const char* filename = "employee_data.txt";
+
+    std::ifstream inputFile(filename);
+    if (!inputFile) {
+        std::cerr << "Failed to open file: " << filename << std::endl;
+        return 1;
+    }
+
+    std::vector<Employee> employees;
+    Employee employee;
+
+    while (inputFile >> employee.name >> employee.payRate >> employee.hoursWorked) {
+        calculatePay(employee);
+        employees.push_back(employee);
+    }
+
+    inputFile.close();
+
+    // Print the pay report
+    cout << std::setw(15) << std::left << "Name";
+    cout << std::setw(10) << std::left << "Pay Rate";
+    cout << std::setw(10) << std::left << "Hours";
+    cout << std::setw(15) << std::left << "Regular Pay";
+    cout << std::setw(15) << std::left << "Overtime Pay";
+    cout << std::setw(15) << std::left << "Gross Pay" << std::endl;
+
+    double totalRegularPay = 0.0;
+    double totalOvertimePay = 0.0;
+    double totalGrossPay = 0.0;
+
+    for (const auto& emp : employees) {
+        cout << std::setw(15) << std::left << emp.name;
+        cout << std::setw(10) << std::left << emp.payRate;
+        cout << std::setw(10) << std::left << emp.hoursWorked;
+        cout << std::setw(15) << std::left << emp.regularPay;
+        cout << std::setw(15) << std::left << emp.overtimePay;
+        cout << std::setw(15) << std::left << emp.grossPay << std::endl;
+
+        totalRegularPay += emp.regularPay;
+        totalOvertimePay += emp.overtimePay;
+        totalGrossPay += emp.grossPay;
+    }
+
+    cout << "\nTotals:\n";
+    cout << "Regular Pay: " << totalRegularPay << std::endl;
+    cout << "Overtime Pay: " << totalOvertimePay << std::endl;
+    cout << "Gross Pay: " << totalGrossPay << std::endl;
+
+    return 0;
+}
