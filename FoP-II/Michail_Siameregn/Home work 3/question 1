@@ -1,0 +1,41 @@
+#include <iostream>
+
+using namespace std;
+struct Student {
+    string id;
+    string name;
+    int test_mark;
+    int final_mark;
+};
+int main() {
+    int num_students;
+    int total_marks = 0;
+    Student students[50];
+    cout << "You are required to input only 50 ";
+    cout << "Enter the number of students: ";
+    cin >> num_students;
+
+    for (int i = 0; i < num_students; i++) {
+        cout << "Enter data for the student " << i+1 << ":";
+        cout << "Id: ";
+        cin >> students[i].id;
+        cout << "name: ";
+        cin >> students[i].name;
+        cout << "test Mark: ";
+        cin >> students[i].test_mark;
+        cout << "final Mark: ";
+        cin >> students[i].final_mark;
+        total_marks = total_marks + students[i].test_mark + students[i].final_mark;
+        cout << "Total Marks: " << total_marks;
+    }
+
+    cout << "Student Records:"<<endl;
+    for (int i = 0; i < num_students; i++) {
+        cout << "Student "<<endl << i+1 << ":";
+        cout << "ID: " <<endl << students[i].id;
+        cout << "Name: " <<endl << students[i].name;
+        cout << "Test Mark: " <<endl << students[i].test_mark;
+        cout << "Final Mark: " <<endl << students[i].final_mark;
+    }
+    return 0;
+}
