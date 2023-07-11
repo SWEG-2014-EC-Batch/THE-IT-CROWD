@@ -1,0 +1,25 @@
+#include <iostream>
+
+struct Point {
+    int x;
+    int y;
+};
+
+Point readCoordinates() {
+    Point point;
+    std::cout << "Enter the x-coordinate: ";
+    std::cin >> point.x;
+    std::cout << "Enter the y-coordinate: ";
+    std::cin >> point.y;
+    return point;
+}
+
+void printCoordinates(Point point) {
+    std::cout << "The coordinates are: (" << point.x << ", " << point.y << ")" << std::endl;
+}
+
+int main() {
+    Point point = readCoordinates();
+    printCoordinates(point);
+    return 0;
+}
