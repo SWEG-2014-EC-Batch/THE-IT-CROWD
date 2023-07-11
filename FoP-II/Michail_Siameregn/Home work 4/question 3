@@ -1,0 +1,86 @@
+1000 imi dolingo 5000.00
+1001 bob dobo 2500.50
+1002 Michael  siameregn 10000.75
+1003 mciahil belay 750.25
+1004 chris brown 12000.00
+
+#include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+struct Customer {
+    int accountNumber;
+    string firstName;
+    string lastName;
+    double balance;
+};
+
+void createFile() {
+    ofstream file("customer_records.txt");
+    if (file.is_open()) {
+        for (int i = 0; i < 5; i++) {
+            Customer customer;
+
+            customer.accountNumber = 1000 + i;
+            
+            cout << "Enter first name for customer " << i+1 << ": ";
+            cin >> customer.firstName;
+            
+            cout << "Enter last name for customer " << i+1 << ": ";
+            cin >> customer.lastName;
+            
+            cout << "Enter account balance for customer " << i+1 << ": ";
+            cin >> customer.balance;
+            
+            file << customer.accountNumber << " "
+                 << customer.firstName << " "
+                 << customer.lastName << " "
+                 << customer.balance << endl;
+        }
+        
+        file.close();
+        cout << "File created successfully." << endl;
+    } else {
+        cout << "Unable to create file." << endl;
+    }
+}
+
+void searchCustomer(int accountNumber) {
+    ifstream file("customer_records.txt");
+    if (file.is_open()) {
+        bool found = false;
+        Customer customer;
+        
+        while (file >> customer.accountNumber >> customer.firstName >> customer.lastName >> customer.balance) {
+            if (customer.accountNumber == accountNumber) {
+                found = true;
+                break;
+            }
+        }
+        
+        file.close();
+        
+        if (found) {
+            cout << "Name: " << customer.firstName << " " << customer.lastName << endl;
+            cout << "Balance: $" << customer.balance << endl;
+        } else {
+            cout << "Customer not found." << endl;
+        }
+    } else {
+        cout << "Unable to open file." << endl;
+    }
+}
+
+int main() {
+    createFile();
+    
+    int accountNumber;
+    cout << "Enter account number to search: ";
+    cin >> accountNumber;
+    
+    searchCustomer(accountNumber);
+    
+    return 0;
+}
