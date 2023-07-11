@@ -6,7 +6,7 @@ using namespace std;
 int main() {
     ifstream file("Sheet5Ex5.cpp");
     char ch;
-    int charCount[26] = {0}; // Initialize an array to store character counts
+    int charCount[26] = {0};
     
     if (file.is_open()) {
         while (file.get(ch)) {
