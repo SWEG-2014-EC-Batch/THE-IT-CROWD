@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+
+struct Phone {
+    string areaCode;
+    string exchange;
+    string number;
+};
+struct Contact {
+    string name;
+    Phone phoneNumber;
+};
+
+int main() {
+    Contact contacts[10];
+    contacts[0].name = "John Doe";
+    contacts[0].phoneNumber.areaCode = "212";
+    contacts[0].phoneNumber.exchange = "767";
+    contacts[0].phoneNumber.number = "8900";
+    for (int i = 1; i < 10; ++i) {
+        cout << "Enter details for Contact " << i + 1 << ":\n";
+        cout << "Name: ";
+        cin.ignore();
+        getline(cin, contacts[i].name);
+        cout << "Area Code: ";
+        cin >> contacts[i].phoneNumber.areaCode;
+        cout << "Exchange: ";
+        cin >> contacts[i].phoneNumber.exchange;
+        cout << "Number: ";
+        cin >> contacts[i].phoneNumber.number;
+        cout << endl;
+    }
+    cout << "Contacts:" << endl;
+    for (int i = 0; i < 10; ++i) {
+        cout << "Name: " << contacts[i].name << endl;
+        cout << "Phone Number: (" << contacts[i].phoneNumber.areaCode 
+             << ") " << contacts[i].phoneNumber.exchange 
+             << "-" << contacts[i].phoneNumber.number << endl;
+        cout << endl;
+    }
+
+    return 0;
+}
