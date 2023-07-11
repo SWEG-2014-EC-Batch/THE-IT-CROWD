@@ -18,8 +18,8 @@ void print(coordinate num){
 }
 
 int main(){
-   coordinate number=readme();
-   print(number);
+  
+   print(readme());
 
   return 0;  
 }
