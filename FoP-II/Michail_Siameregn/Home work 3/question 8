@@ -1,0 +1,77 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+struct Student {
+    string name;
+    char gender;
+    float grade;
+};
+vector<Student> readStudentRecords() {
+    int numStudents;
+    cout << "Enter the number of students: ";
+    cin >> numStudents;
+    
+    vector<Student> studentRecords(numStudents);
+    
+    for (int i = 0; i < numStudents; ++i) {
+        cout << "Enter the student's name: ";
+        cin >> studentRecords[i].name;
+        
+        cout << "Enter the student's gender (M/F): ";
+        cin >> studentRecords[i].gender;
+        
+        cout << "Enter the student's grade: ";
+        cin >> studentRecords[i].grade;
+    }
+
+    return studentRecords;
+}
+
+void displayStudentRecords(const vector<Student>& records) {
+    cout << "===================================" << endl;
+    cout << "Name\t\tGender\tGrade" << endl;
+    cout << "-----------------------------------" << endl;
+
+    for (const Student& record : records) {
+        cout << record.name << "\t" << record.gender << "\t" << record.grade << endl;
+    }
+
+    cout << "===================================" << endl;
+}
+
+void displayStudentsByGender(const vector<Student>& records, char gender) {
+    vector<Student> filteredRecords;
+
+    for (const Student& record : records) {
+        if (record.gender == gender) {
+            filteredRecords.push_back(record);
+        }
+    }
+
+    if (!filteredRecords.empty()) {
+        string genderString = (gender == 'M') ? "male" : "female";
+        cout << "List of " << genderString << " students:" << endl;
+        displayStudentRecords(filteredRecords);
+    } else {
+        cout << "No " << ((gender == 'M') ? "male" : "female") << " students found." << endl;
+    }
+}
+
+int main() {
+    vector<Student> students = readStudentRecords();
+    displayStudentRecords(students);
+
+    char choice;
+    cout << "Enter 'M' to display male students, 'F' to display female students: ";
+    cin >> choice;
+
+    if (choice == 'M' || choice == 'F') {
+        displayStudentsByGender(students, choice);
+    } else {
+        cout << "Invalid choice." << endl;
+    }
+
+    return 0;
+}
