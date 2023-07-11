@@ -28,7 +28,7 @@ Our goals include fostering a collaborative environment, sharing learning resour
 ## Folder Structure
 Main folders included in our repositry includes:
 
-1.FoP-I(Fundamentals of programming 1)
+1. FoP-I(Fundamentals of programming 1)
   Includes subfolders of our past semester Activities, Homeworks and Projects individually commited by our team members.
   The subfolders included are:
     Meseret Bolled
@@ -43,7 +43,7 @@ Main folders included in our repositry includes:
     Here you will find every worksheet questions, classroom activites, Homeworks and Projects in each subfolders except the PROJECT folder where it has two sections Project-I and Project-II.
     
 
-2.FoPII(Fundamentals of programming 2)
+2. FoPII(Fundamentals of programming 2)
   This folder inludes subfolders where our current Activities, Homeworks and Projects are commited individually by our team members.
     The Subfolders included are:
          Meseret Bolled
@@ -119,31 +119,31 @@ Please note that the availability and accessibility of these resources may vary,
 
 ## Contact Information
 Here you will find the contact information of each group members.
-Meseret Bolled
-    Email:meseretbolled@gmail.com 
-    Telegram:@Asacrifice
-    GitHub:https://github.com/Meseretbolled
-Michail Addis
-    Email:
-    Telegram:@Riley_freeman47
-    GitHub:
-Michael Getu
-    Email:michaelgetu21@gmail.com
-    Telegram:@Michael_Getu
-    GitHub:https://github.com/MichaelGetu-git
-Michail_Siameregn
-    Email:michailsiameregn600@gmail.com
-    Telegram:@mikos17
-    GitHub:https://github.com/michailS17
-MichaelWorkineh
-    Email:micwor96@gmail.com
-    Telegram:@MicWor
-    GitHub:https://github.com/mugFace
-Mikiyas Alemayehu Mekonen
-    Email:
-    Telegram:
-    GitHub:
-Mikiyas Alemayehu Gebrewold
-    Email:
-    Telegram:
-    GitHub:
+1. Meseret Bolled
+   - Email:meseretbolled@gmail.com 
+   - Telegram:@Asacrifice
+   - GitHub:https://github.com/Meseretbolled
+2. Michail Addis
+    - Email: michaeladdis78@gmail.com
+    - Telegram:@Riley_freeman47
+    - GitHub: https://github.com/mikeaddis1265
+3. Michael Getu
+    - Email:michaelgetu21@gmail.com
+    - Telegram:@Michael_Getu
+    - GitHub:https://github.com/MichaelGetu-git
+4. Michail_Siameregn
+    - Email:michailsiameregn600@gmail.com
+    - Telegram:@mikos17
+    - GitHub:https://github.com/michailS17
+5. MichaelWorkineh
+    - Email:micwor96@gmail.com
+    - Telegram:@MicWor
+    - GitHub:https://github.com/mugFace
+6. Mikiyas Alemayehu Mekonen
+    - Email:
+    - Telegram:
+    - GitHub:
+7. Mikiyas Alemayehu Gebrewold
+    - Email:
+    - Telegram:
+    - GitHub:
