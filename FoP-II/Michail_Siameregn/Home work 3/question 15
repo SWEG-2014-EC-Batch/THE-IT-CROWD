@@ -1,0 +1,32 @@
+#include <iostream>
+
+class Area {
+private:
+    double length;
+    double breadth;
+
+public:
+    void setDim(double len, double bre) {
+        length = len;
+        breadth = bre;
+    }
+
+    double getArea() {
+        return length * breadth;
+    }
+};
+
+int main() {
+    double length, breadth;
+    Area rectangle;
+    std::cout << "Enter the length of the rectangle: ";
+    std::cin >> length;
+
+    std::cout << "Enter the breadth of the rectangle: ";
+    std::cin >> breadth;
+    rectangle.setDim(length, breadth);
+    double area = rectangle.getArea();
+    std::cout << "The area of the rectangle is: " << area << std::endl;
+
+    return 0;
+}
