@@ -1,0 +1,40 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+class Triangle {
+private:
+    double side1;
+    double side2;
+    double side3;
+
+public:
+    Triangle(double s1, double s2, double s3) : side1(s1), side2(s2), side3(s3) {}
+
+    double calculatePerimeter() {
+        return side1 + side2 + side3;
+    }
+
+    double calculateArea() {
+        double s = calculatePerimeter() / 2.0; 
+        return sqrt(s * (s - side1) * (s - side2) * (s - side3));
+    }
+};
+
+int main() {
+    double side1 = 3.0;
+    double side2 = 4.0;
+    double side3 = 5.0;
+
+    Triangle triangle(side1, side2, side3);
+
+    double perimeter = triangle.calculatePerimeter();
+    double area = triangle.calculateArea();
+
+    cout << "Triangle with sides " << side1 << ", " << side2 << ", " << side3 << endl;
+    cout << "Perimeter: " << perimeter << endl;
+    cout << "Area: " << area << endl;
+
+    return 0;
+}
