@@ -1,0 +1,132 @@
+#include <iostream>
+#include <fstream>
+#include <algorithm>
+#include <vector>
+
+using namespace std;
+
+struct Employee {
+    int id;
+    char sex;
+    double hourlyWage;
+    int yearsWithCompany;
+};
+
+bool compareById(const Employee& emp1, const Employee& emp2) {
+    return emp1.id < emp2.id;
+}
+
+void enterEmployeeData(vector<Employee>& employees) {
+    for (int i = 0; i < 10; i++) {
+        Employee emp;
+        
+        cout << "Enter ID for employee " << i+1 << ": ";
+        cin >> emp.id;
+        
+        cout << "Enter sex (M/F) for employee " << i+1 << ": ";
+        cin >> emp.sex;
+        
+        cout << "Enter hourly wage for employee " << i+1 << ": ";
+        cin >> emp.hourlyWage;
+        
+        cout << "Enter years with company for employee " << i+1 << ": ";
+        cin >> emp.yearsWithCompany;
+        
+        employees.push_back(emp);
+    }
+}
+
+void sortAndWriteToFile(const vector<Employee>& employees) {
+    vector<Employee> sortedEmployees = employees;
+    sort(sortedEmployees.begin(), sortedEmployees.end(), compareById);
+    
+    ofstream file("employee_records.txt");
+    if (file.is_open()) {
+        for (const auto& emp : sortedEmployees) {
+            file << emp.id << " "
+                 << emp.sex << " "
+                 << emp.hourlyWage << " "
+                 << emp.yearsWithCompany << endl;
+        }
+        
+        file.close();
+        cout << "Employee records written to file successfully." << endl;
+    } else {
+        cout << "Unable to write to file." << endl;
+    }
+}
+
+void calculateTotalPay() {
+    ifstream file("employee_records.txt");
+    if (file.is_open()) {
+        int hoursWorked;
+        double totalPay;
+        Employee emp;
+        
+        while (file >> emp.id >> emp.sex >> emp.hourlyWage >> emp.yearsWithCompany) {
+            cout << "Enter hours worked for employee with ID " << emp.id << ": ";
+            cin >> hoursWorked;
+            
+            totalPay = hoursWorked * emp.hourlyWage;
+            
+            cout << "Total pay for employee with ID " << emp.id << " is $" << totalPay << endl;
+        }
+        
+        file.close();
+    } else {
+        cout << "Unable to open file." << endl;
+    }
+}
+
+void updateEmployeeData() {
+    ifstream file("employee_records.txt");
+    if (file.is_open()) {
+        vector<Employee> employees;
+        Employee emp;
+        
+        while (file >> emp.id >> emp.sex >> emp.hourlyWage >> emp.yearsWithCompany) {
+            employees.push_back(emp);
+        }
+        
+        file.close();
+        
+        for (auto& emp : employees) {
+            cout << "Update hourly wage for employee with ID " << emp.id << ": ";
+            cin >> emp.hourlyWage;
+            
+            cout << "Update years with company for employee with ID " << emp.id << ": ";
+            cin >> emp.yearsWithCompany;
+        }
+        
+        ofstream updatedFile("updated_employee_records.txt");
+        if (updatedFile.is_open()) {
+            for (const auto& emp : employees) {
+                updatedFile << emp.id << " "
+                            << emp.sex << " "
+                            << emp.hourlyWage << " "
+                            << emp.yearsWithCompany << endl;
+            }
+            
+            updatedFile.close();
+            cout << "Employee records updated and written to file successfully." << endl;
+        } else {
+            cout << "Unable to write to file." << endl;
+        }
+    } else {
+        cout << "Unable to open file." << endl;
+    }
+}
+
+int main() {
+    vector<Employee> employees;
+
+    enterEmployeeData(employees);
+
+    sortAndWriteToFile(employees);
+    
+    calculateTotalPay();
+    
+    updateEmployeeData();
+
+    return 0;
+}
