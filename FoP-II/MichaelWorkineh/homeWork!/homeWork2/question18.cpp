@@ -27,4 +27,4 @@ void discountCalculator(double &price, double discount, bool discountType){
         price=price-discount;
     }
 }
-}
+
