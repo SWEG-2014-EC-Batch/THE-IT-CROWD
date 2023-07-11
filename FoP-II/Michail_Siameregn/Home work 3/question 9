@@ -1,0 +1,75 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+struct StudentRecord {
+    int id;
+    vector<int> marks;
+    double averageMark;
+    int rank;
+};
+
+bool compareByRank(const StudentRecord& student1, const StudentRecord& student2) {
+    return student1.rank < student2.rank;
+}
+
+void inputData(vector<StudentRecord>& students) {
+    int numStudents;
+    cout << "Enter the number of students: ";
+    cin >> numStudents;
+
+    students.resize(numStudents);
+
+    for (int i = 0; i < numStudents; i++) {
+        cout << "Enter ID number for student " << i + 1 << ": ";
+        cin >> students[i].id;
+
+        int numMarks;
+        cout << "Enter the number of marks for student " << i + 1 << ": ";
+        cin >> numMarks;
+
+        students[i].marks.resize(numMarks);
+
+        cout << "Enter the marks for student " << i + 1 << ": ";
+
+        for (int j = 0; j < numMarks; j++) {
+            cin >> students[i].marks[j];
+        }
+        double sum = 0;
+        for (int mark : students[i].marks) {
+            sum += mark;
+        }
+        students[i].averageMark = sum / numMarks;
+    }
+}
+
+void calculateRank(vector<StudentRecord>& students) {
+    sort(students.begin(), students.end(),
+         [](const StudentRecord& student1, const StudentRecord& student2) {
+             return student1.averageMark > student2.averageMark;
+         });
+
+    for (int i = 0; i < students.size(); i++) {
+        students[i].rank = i + 1;
+    }
+}
+
+void displayStudentsByRank(const vector<StudentRecord>& students) {
+    cout << "ID\tAverage Mark\tRank" << endl;
+
+    for (const StudentRecord& student : students) {
+        cout << student.id << "\t" << student.averageMark << "\t\t" << student.rank << endl;
+    }
+}
+
+int main() {
+    vector<StudentRecord> students;
+
+    inputData(students);
+    calculateRank(students);
+    displayStudentsByRank(students);
+
+    return 0;
+}
