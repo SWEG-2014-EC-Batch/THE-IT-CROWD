@@ -1,0 +1,38 @@
+#include <iostream>
+#include <fstream>
+
+void readFileIntoArray(const char* filename, int array[], int* count) {
+    std::ifstream inputFile(filename);
+    
+    if (inputFile.is_open()) {
+        int num;
+        *count = 0;
+
+        while (inputFile >> num) {
+            array[*count] = num;
+            (*count)++;
+        }
+
+        inputFile.close();
+    } else {
+        std::cerr << "Failed to open file: " << filename << std::endl;
+    }
+}
+int main() {
+    const char* filename = "data.txt";
+    const int ARRAY_SIZE = 100;
+    int array[ARRAY_SIZE];
+    int count = 0;
+
+    readFileIntoArray(filename, array, &count);
+
+    // Print the values in the array
+    for (int i = 0; i < count; i++) {
+        std::cout << array[i] << " ";
+    }
+    std::cout << std::endl;
+
+    std::cout << "Total entries in the file: " << count << std::endl;
+
+    return 0;
+}
