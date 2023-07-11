@@ -1,0 +1,16 @@
+struct Employee {
+    int number;
+    string name;
+    float rate;
+    int hours;
+
+};
+Employee employee1 = {3462, "JONES", 4.62, 40};
+Employee employee2 = {6793, "Robbins", 5.83, 38};
+Employee employee3 = {7834, "Swain", 6.89, 40};
+Employee employee4 = {9002, "Williams", 4.75, 42};
+
+cout << "Employee Name: " << employee1.name << endl;
+cout << "Employee Rate: " << employee2.rate << endl;
+
+employee3.hours = 45;  // Update the hours worked for employee3
