@@ -1,0 +1,117 @@
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+
+using namespace std;
+
+struct Student {
+    string name;
+    double exam1;
+    double exam2;
+    double homework;
+    double finalExam;
+    double finalGrade;
+    char letterGrade;
+};
+
+char calculateLetterGrade(double finalGrade) {
+    if (finalGrade >= 90) {
+        return 'A';
+    } else if (finalGrade >= 80) {
+        return 'B';
+    } else if (finalGrade >= 70) {
+        return 'C';
+    } else if (finalGrade >= 60) {
+        return 'D';
+    } else {
+        return 'F';
+    }
+}
+
+void enterStudentData(Student students[], int numStudents) {
+    for (int i = 0; i < numStudents; i++) {
+        cout << "Enter name of student " << i+1 << ": ";
+        cin >> students[i].name;
+        
+        cout << "Enter Exam 1 score for student " << i+1 << ": ";
+        cin >> students[i].exam1;
+        
+        cout << "Enter Exam 2 score for student " << i+1 << ": ";
+        cin >> students[i].exam2;
+        
+        cout << "Enter Homework score for student " << i+1 << ": ";
+        cin >> students[i].homework;
+        
+        cout << "Enter Final Exam score for student " << i+1 << ": ";
+        cin >> students[i].finalExam;
+        
+        students[i].finalGrade = 0.20 * students[i].exam1 + 0.20 * students[i].exam2
+                                + 0.35 * students[i].homework + 0.25 * students[i].finalExam;
+        
+        students[i].letterGrade = calculateLetterGrade(students[i].finalGrade);
+    }
+}
+
+void displayStudentData(const Student students[], int numStudents) {
+    cout << "-------------------------- Student Information --------------------------" << endl;
+    cout << setw(15) << left << "Name"
+         << setw(10) << right << "Exam 1"
+         << setw(10) << right << "Exam 2"
+         << setw(10) << right << "Homework"
+         << setw(12) << right << "Final Exam"
+         << setw(12) << right << "Final Grade"
+         << setw(10) << right << "Letter Grade" << endl;
+    
+    for (int i = 0; i < numStudents; i++) {
+        cout << setw(15) << left << students[i].name
+             << setw(10) << right << students[i].exam1
+             << setw(10) << right << students[i].exam2
+             << setw(10) << right << students[i].homework
+             << setw(12) << right << students[i].finalExam
+             << setw(12) << right << fixed << setprecision(2) << students[i].finalGrade
+             << setw(10) << right << students[i].letterGrade << endl;
+    }
+}
+
+void writeStudentDataToFile(const Student students[], int numStudents) {
+    ofstream file("student_records.txt");
+    if (file.is_open()) {
+        file << "-------------------------- Student Information --------------------------" << endl;
+        file << setw(15) << left << "Name"
+             << setw(10) << right << "Exam 1"
+             << setw(10) << right << "Exam 2"
+             << setw(10) << right << "Homework"
+             << setw(12) << right << "Final Exam"
+             << setw(12) << right << "Final Grade"
+             << setw(10) << right << "Letter Grade" << endl;
+        
+        for (int i = 0; i < numStudents; i++) {
+            file << setw(15) << left << students[i].name
+                 << setw(10) << right << students[i].exam1
+                 << setw(10) << right << students[i].exam2
+                 << setw(10) << right << students[i].homework
+                 << setw(12) << right << students[i].finalExam
+                 << setw(12) << right << fixed << setprecision(2) << students[i].finalGrade
+                 << setw(10) << right << students[i].letterGrade << endl;
+        }
+        
+        file.close();
+        cout << "Student records written to file successfully." << endl;
+    } else {
+        cout << "Unable to write to file." << endl;
+int main() {
+    const int MAX_STUDENTS = 20;
+    Student students[MAX_STUDENTS];
+    int numStudents;
+
+    cout << "Enter the number of students (up to 20): ";
+    cin >> numStudents;
+
+    enterStudentData(students, numStudents);
+
+    displayStudentData(students, numStudents);
+
+    writeStudentDataToFile(students, numStudents);
+
+    return 0;
+}
