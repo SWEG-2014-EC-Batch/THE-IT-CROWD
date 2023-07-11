@@ -1,0 +1,5 @@
+RobelGetu 1000 220.2
+AlemFeleke 2001 1000000
+MeronGebru 2220 20000000
+TezetaAbrham 2011 1000000
+YehonalMekuria 2030 2000000.12
