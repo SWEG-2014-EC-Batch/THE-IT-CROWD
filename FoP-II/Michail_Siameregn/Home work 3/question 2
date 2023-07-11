@@ -1,0 +1,45 @@
+#include <iostream>
+using namespace std;
+
+struct Person {
+    string name;
+    string gender;
+    int age;
+    double weight;
+    double height;
+};
+
+int main() {
+    Person person;
+    cout << "Enter Name: ";
+    getline(cin, person.name);
+    cout << "Enter Gender: ";
+    cin >> person.gender;
+    cout << "Enter Age: ";
+    cin >> person.age;
+    cout << "Enter Weight: ";
+    cin >> person.weight;
+    cout << "Enter Height:  ";
+    cin >> person.height;
+    double bmi = person.weight / (person.height * person.height);
+
+    cout << endl;
+    cout << "Personal Information" << endl;
+    cout << "Name: " << person.name << endl;
+    cout << "Gender: " << person.gender << endl;
+    cout << "Age: " << person.age << endl;
+    cout << "Weight: " << person.weight <<  endl;
+    cout << "Height: " << person.height <<  endl;
+    cout << "BMI: " << bmi << endl;
+    
+    if (bmi < 18.5) {
+        cout << "Underweight" << endl;
+    } else if (bmi < 25.0) {
+        cout << "Normal weight" << endl;
+    } else if (bmi < 30.0) {
+        cout << "Overweight" << endl;
+    } else {
+        cout << "Obese" << endl;
+    }
+
+}
