@@ -1,0 +1,53 @@
+#include <iostream>
+using namespace std;
+
+struct ComplexNumber {
+    double real;
+    double imaginary;
+};
+ComplexNumber addComplex(ComplexNumber num1, ComplexNumber num2) {
+ ComplexNumber result;
+result.real = num1.real + num2.real;
+result.imaginary = num1.imaginary + num2.imaginary;
+return result;
+}
+ComplexNumber subtractComplex(ComplexNumber num1, ComplexNumber num2) {
+ComplexNumber result;
+ result.real = num1.real - num2.real;
+result.imaginary = num1.imaginary - num2.imaginary;
+ return result;
+}
+ComplexNumber multiplyComplex(ComplexNumber num1, ComplexNumber num2) {
+ComplexNumber result;  
+result.real = (num1.real * num2.real) - (num1.imaginary * num2.imaginary);
+result.imaginary = (num1.real * num2.imaginary) + (num1.imaginary * num2.real);
+   return result;
+}
+ComplexNumber divideComplex(ComplexNumber num1, ComplexNumber num2) {
+ComplexNumber result;
+double denominator = (num2.real * num2.real) + (num2.imaginary * num2.imaginary);
+ result.real = ((num1.real * num2.real) + (num1.imaginary * num2.imaginary)) / denominator;
+result.imaginary = ((num1.imaginary * num2.real) - (num1.real * num2.imaginary)) / denominator;
+return result;
+}
+
+int main() {
+ ComplexNumber num1, num2;
+  cout << "Enter the real part of the first complex number: ";
+  cin >> num1.real;
+  cout << "Enter the imaginary part of the first complex number: ";
+  cin >> num1.imaginary;
+  cout << "Enter the real part of the second complex number: ";
+  cin >> num2.real;
+  cout << "Enter the imaginary part of the second complex number: ";
+  cin >> num2.imaginary;
+    ComplexNumber sum = addComplex(num1, num2);
+    ComplexNumber difference = subtractComplex(num1, num2);
+    ComplexNumber product = multiplyComplex(num1, num2);
+    ComplexNumber quotient = divideComplex(num1, num2);
+    cout << "\nResults:" << endl;
+    cout << "Sum: " << sum.real << " + " << sum.imaginary << "i" << endl;
+    cout << "Difference: " << difference.real << " + " << difference.imaginary << "i" << endl;
+    cout << "Product: " << product.real << " + " << product.imaginary << "i" << endl;
+    cout << "Quotient: " << quotient.real << " + " << quotient.imaginary << "i" << endl;
+}
