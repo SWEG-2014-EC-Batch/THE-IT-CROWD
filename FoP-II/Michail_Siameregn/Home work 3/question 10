@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+typedef bool Boolean; 
+
+struct Town {
+    char name[50];
+    int population;
+    Boolean hasAirport;
+};
+
+int main() {
+    Town myTown;
+
+    cout << "Enter town name: ";
+    cin.getline(myTown.name, 50);
+
+    cout << "Enter town population: ";
+    cin >> myTown.population;
+
+    cout << "Does the town have an airport? (1 for true, 0 for false): ";
+    cin >> myTown.hasAirport;
+
+    cout << endl << "Town Information:" << endl;
+    cout << "Name: " << myTown.name << endl;
+    cout << "Population: " << myTown.population << endl;
+    cout << "Has Airport: " << (myTown.hasAirport ? "Yes" : "No") << endl;
+
+    return 0;
+}
