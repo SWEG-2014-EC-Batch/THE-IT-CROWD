@@ -1,1 +1,117 @@
+#include <iostream>
+using namespace std;
 
+struct phone
+{
+    int area, exchange, number;
+};
+
+struct info
+{
+    char name[20];
+    phone one;
+};
+#include <iostream>
+using namespace std;
+
+struct phone
+{
+    int area, exchange, number;
+};
+
+struct info
+{
+    char name[20];
+    phone one;
+};
+
+void getnum(info x[10]);
+void getinfo(info people[10])
+{
+    for (int i = 0; i < 10; i++)
+    {
+        cout << "NAME FOR PERSON: " << i + 1 << endl;
+        cin.getline(people[i].name, 20);
+        // cout << endl;
+        // cin.ignore();
+
+        cout << "PHONE NUMBER FOR PERSON :" << i + 1 << endl;
+        cin >> people[i].one.area;
+        cin >> people[i].one.exchange;
+        cin >> people[i].one.number;
+
+        cout << endl;
+        cin.ignore();
+    }
+}
+
+int main()
+{
+    info people[10];
+
+    cout << "Enter the phone number:\n";
+    getinfo(people);
+    getnum(people);
+
+    return 0;
+}
+
+void getnum(info x[10])
+
+{
+    cout << "  NAME:\t\t\t"
+         << "PHONE NUMBER:\n";
+
+    for (int i = 0; i < 10; i++)
+    {
+
+        cout << "  " << x[i].name << "\t\t" << x[i].one.area << x[i].one.exchange << " " << x[i].one.number << endl;
+    }
+};
+
+void getnum(info x[10]);
+void getinfo(info people[10])
+{
+    for (int i = 0; i < 10; i++)
+    {
+        cout << "NAME FOR PERSON: " << i + 1 << endl;
+        cin.getline(people[i].name, 20);
+        // cout << endl;
+        // cin.ignore();
+
+        cout << "PHONE NUMBER FOR PERSON :" << i + 1 << endl;
+        cin >> people[i].one.area;
+        cin >> people[i].one.exchange;
+        cin >> people[i].one.number;
+
+        cout << endl;
+        cin.ignore();
+    }
+}
+
+int main()
+{
+    info people[10];
+
+    cout << "Enter the phone number:\n";
+    getinfo(people);
+    getnum(people);
+
+    // getnum(phone1);
+    // getnum(phone2);
+
+    return 0;
+}
+
+void getnum(info x[10])
+
+{
+    cout << "  NAME:\t\t\t"
+         << "PHONE NUMBER:\n";
+
+    for (int i = 0; i < 10; i++)
+    {
+
+        cout << "  " << x[i].name << "\t\t" << x[i].one.area << x[i].one.exchange << " " << x[i].one.number << endl;
+    }
+};
