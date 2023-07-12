@@ -1,0 +1,73 @@
+#include <iostream>
+using namespace std;
+
+struct student
+{
+    char name[20];
+    int id;
+    float test_mark[3];
+    float final_mark;
+    float total;
+};
+
+void display(student arry[], int size)
+{
+
+    cout << "\t\tSTUDENTS MARK LIST\n";
+    cout << "NAME\t\t"
+         << "ID\t"
+         << "FINAL MARK\t"
+         << "MID-1\t"
+         << "MID-2\t"
+         << "MID 3\t"
+         << "TOTAL RESULT\n";
+
+    for (int i = 0; i < size; i++)
+    {
+
+        cout << arry[i].name << "\t\t" << arry[i].id << "\t" << arry[i].final_mark << "\t"
+             << arry[i].test_mark[0] << "\t" << arry[i].test_mark[1] << "\t" << arry[i].test_mark[2] << "\t" << arry[i].total;
+        cout << endl;
+    }
+}
+
+int main()
+{
+    int Num_students;
+    student arr[Num_students];
+
+    cout << "Students information : " << endl;
+    cout << "how many students are in a class ? " << endl;
+    cin >> Num_students;
+    cin.ignore();
+
+    for (int i = 0; i < Num_students; i++)
+    {
+
+        cout << "enter information for " << i + 1 << " student\n";
+        cout << "enter name :";
+        cin.getline(arr[i].name, 20);
+
+        cout << "enter id\n";
+        cin >> arr[i].id;
+
+        cout << "enter the final exam\n";
+        cin >> arr[i].final_mark;
+        arr[i].total = arr[i].final_mark;
+
+        cout << "enter the 3 mid assesment results:\n";
+
+        for (int j = 0; j < 3; j++)
+        {
+
+            cout << "enter the  " << j << "mid exam result for " << i << " student ";
+            cin >> arr[i].test_mark[j];
+            arr[i].total += arr[i].test_mark[j];
+        }
+        cin.ignore();
+    }
+
+    display(arr, Num_students);
+
+    return 0;
+}
