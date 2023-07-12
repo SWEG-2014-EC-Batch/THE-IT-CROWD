@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+struct phone
+{
+    int area, exchange, number;
+} phone1 = {123, 432, 5433};
+
+void getnum(phone);
+
+int main()
+{
+    phone phone2;
+    cout << "Enter the phone number:\n";
+
+    cin >> phone2.area;
+    cin >> phone2.exchange;
+    cin >> phone2.number;
+
+    getnum(phone1);
+    getnum(phone2);
+
+    return 0;
+}
+
+void getnum(phone x)
+{
+    cout << "\t" << x.area << " " << x.exchange << " " << x.number << endl;
+}
