@@ -1,0 +1,184 @@
+#ifndef PROJECT_H
+#define PROJECT_H
+
+#include <iostream>
+#include <string>
+using namespace std;
+// create structure for flight passangers
+struct person
+{
+    std::string name;
+    int age;
+    char sex;
+    std::string passport_Num;
+};
+
+void changeColor();                                      // change color
+void changeColor2();                                     // chagne color
+void pauseExecution();                                   // system pause
+void displayMainPageOptions();                           // dislay mainpage options
+void receivePersonalInfo(person *passengers, int index); // recive passenger info
+void dis(person passengers[], int index);                // display passenger info
+void displayPassportNotFound();
+void searchPassport(person passengers[]);
+void displayallpassengers(person passengers[]); // list all flight passengers
+
+#endif // AIRLINERESERVATIONSYSTEM_H
+
+// funtion to change color
+void changeColor()
+{
+    std::cout << "\033[48;2;50;50;100m"; // Change background color to a beautiful shade of blue
+    std::cout << "\033[38;2;200;200;0m"; // Change text color to a beautiful shade of yellow
+}
+void changeColor2()
+{
+    std::cout << "\033[0m";     // Reset colors to default
+    std::cout << "\033[47;30m"; // Set background color to white and text color to black
+}
+// fuction to display classchoice
+void displayClassOptions()
+{
+    cout << "\t*********************************************************************************" << std::endl;
+    cout << "\t*____________________List of available classes__________________________________*" << std::endl;
+    cout << "\t*  First class --------------------------------------------------------------[1]*" << std::endl;
+    cout << "\t*_______________________________________________________________________________*" << std::endl;
+    cout << "\t* Economy class -------------------------------------------------------------[2]*" << std::endl;
+    cout << "\t*********************************************************************************" << std::endl;
+}
+
+// fuction for system pause
+void pauseExecution()
+{
+    std::cout << "Press enter to continue...";
+    std::cin.ignore(); // Ignore any input
+    std::cin.get();    // Wait for the user to press enter
+}
+// fuction to diplay main page option
+void displayMainPageOptions()
+{
+    cout << "\t*********************************************************************************************" << endl;
+    cout << "\t*___________________________________________________________________________________________*" << endl;
+    cout << "\t*                               Airline Reservation System                                  *" << endl;
+    cout << "\t*___________________________________________________________________________________________*" << endl;
+    cout << "\t*  Book a flight------------------------------------------------------------------------[1] *" << endl;
+    cout << "\t*___________________________________________________________________________________________*" << endl;
+    cout << "\t*  Search for attendance----------------------------------------------------------------[2] *" << endl;
+    cout << "\t*___________________________________________________________________________________________*" << endl;
+    cout << "\t*  List all passengers------------------------------------------------------------------[3] *" << endl;
+    cout << "\t*___________________________________________________________________________________________*" << endl;
+    cout << "\t*  Exit---------------------------------------------------------------------------------[4] *" << endl;
+    cout << "\t*___________________________________________________________________________________________*" << endl;
+    cout << "\t*********************************************************************************************" << endl;
+    cout << "\tEnter your choice here: "; // ask the user to choose among the main options
+}
+// recive a passenger information function
+void receivePersonalInfo(person *passengers, int index)
+{
+    cout << "Enter your name: ";
+    cin.ignore();
+    getline(cin, passengers[index].name);
+    cout << "Enter your sex (m/f): ";
+    cin >> passengers[index].sex;
+    cout << "Enter your age: ";
+    cin >> passengers[index].age;
+    cout << "Enter your passport: ";
+    cin >> passengers[index].passport_Num;
+    person x = passengers[index];
+};
+
+// diplay a boarding pass thicket
+
+void dis(person passengers[], int index)
+{
+
+    cout << "\t******* Boarding pass **********" << endl;
+    cout << "\t* Name : " << passengers[index].name << endl;
+    cout << "\t* Sex  : " << passengers[index].sex << endl;
+    cout << "\t* Age  : " << passengers[index].age << endl;
+    cout << "\t* Passport number  : " << passengers[index].passport_Num << endl;
+    cout << "\t*-------------------------------" << endl;
+    cout << "\t* Seat number : " << index + 1 << endl;
+    if (index >= 30)
+    {
+        cout << "\t* Section: "
+             << "economy class" << endl;
+    }
+    else
+    {
+        cout << "\t*  section:  "
+             << "business class" << endl;
+    }
+
+    cout << "\t* Enjoy your flight!" << endl;
+    cout << "\t*-------------------------------" << endl;
+    cout << "\t*********************************\n"
+         << endl;
+};
+
+// dispaly pass port not found
+void displayPassportNotFound()
+{
+
+    cout << "\033[0;41m"; // Set red background color
+
+    cout << "\n\t*************************************************************" << std::endl;
+    cout << "\tPassport Not Found !" << std::endl;
+    cout << "\t*************************************************************\n"
+         << endl;
+
+    cout << "\033[0m"; // Reset color
+    cout << endl;
+};
+
+// search for attendance
+void searchPassport(person passengers[])
+{
+
+    system("clear");
+    cout << "\033[0;43m"; // Set yellow background color
+
+    string tobesearched_passport;
+    cout << "Please enter the passport: ";
+    cin >> tobesearched_passport;
+
+    bool passport_found = false;
+    int idx;
+
+    // Search among all passengers
+    for (int i = 0; i < 100; i++)
+    {
+        if (passengers[i].passport_Num == tobesearched_passport)
+        {
+            idx = i;
+            passport_found = true;
+            break;
+        }
+    }
+
+    if (passport_found)
+    {
+        dis(passengers, idx);
+    }
+    else
+    {
+        displayPassportNotFound();
+    }
+    pauseExecution(); // Pause execution
+    system("clear");
+};
+// display all passengers
+void displayallpassengers(person passengers[])
+{
+
+    for (int i = 0; i < 100; i++)
+    {
+        if (passengers[i].name.size() != 0)
+        {
+            cout << "\n";
+            dis(passengers, i);
+        }
+    }
+
+    cout << "\n-------------------------------------------------" << endl;
+}
