@@ -1,0 +1,146 @@
+#include <iostream>
+#include <string.h>
+#include"project.h"
+using namespace std;
+
+
+
+int main()
+{
+    person passengers[100];
+    int first_class = 0;
+    int economic_class = 30;
+    int main_choice, sub_choice;
+    char yes_no;
+
+    do
+    {
+        changeColor();
+        cout << endl;
+
+        displayMainPageOptions(); // Display main page options
+        cin >> main_choice;
+
+        switch (main_choice)
+        {
+        case 1:
+        {
+            if (first_class >= 30 && economic_class >= 100)
+            {
+                system("clear");
+                cout << "ALL SEATS ARE BOOKED " << endl;
+                pauseExecution(); // Pause execution
+                system("clear");
+            }
+            else
+            {
+                system("clear");
+                changeColor2();        // Change color
+                displayClassOptions(); // Display class options
+                cout << endl;
+
+            choice:
+                cout << "\tenter your choice here: ";
+                cin >> sub_choice;
+
+                if (sub_choice != 1 && sub_choice != 2)
+                {
+                    cout << "invalid input" << endl;
+                    goto choice;
+                }
+
+                if (sub_choice == 1)
+                {
+                    system("clear");
+                    if (first_class >= 30)
+                    {
+                        cout << "First class is full. Do you want to book economy class? (y/n)" << endl;
+                        cin >> yes_no;
+
+                        if (yes_no == 'y' || yes_no == 'Y')
+                        {
+                            receivePersonalInfo(passengers, economic_class); // Receive personal info for economy class
+                            dis(passengers, economic_class);                 // Display boarding pass
+                            economic_class++;
+                            pauseExecution(); // Pause execution
+                            system("clear");
+                        }
+                        else
+                        {
+                            cout << "NEXT FLIGHT LEAVES IN 3 HOURS" << endl;
+                        }
+                    }
+                    else
+                    {
+                        receivePersonalInfo(passengers, first_class); // Receive personal info for first class
+                        dis(passengers, first_class);                 // Display boarding pass
+                        first_class++;
+                        pauseExecution(); // Pause execution
+                        system("clear");
+                    }
+                }
+                else
+                {
+                    system("clear");
+                    if (economic_class > 100)
+                    {
+                        cout << "Economy class is full. Do you want to book first class? (y/n)" << endl;
+                        cin >> yes_no;
+
+                        if (yes_no == 'y' || yes_no == 'Y')
+                        {
+                            receivePersonalInfo(passengers, first_class); // Receive personal info for first class
+                            dis(passengers, first_class);                 // Display boarding pass
+                            first_class++;
+                            pauseExecution(); // Pause execution
+                            system("clear");
+                        }
+                        else
+                        {
+                            cout << "NEXT FLIGHT LEAVES IN 3 HOURS" << endl;
+                        }
+                    }
+                    else
+                    {
+                        receivePersonalInfo(passengers, first_class); // Receive personal info for economy class
+                        dis(passengers, first_class);                 // Display boarding pass
+                        first_class++;
+                        pauseExecution(); // Pause execution
+                        system("clear");
+                    }
+                }
+            }
+            break;
+        }
+        case 2:
+        {
+            system("clear");
+            searchPassport(passengers); // Search for passport
+            break;
+        }
+        case 3:
+        {
+            cout << "ALL THE PASSENGERS ARE : \n";
+            system("clear");
+            displayallpassengers(passengers); // Display all passengers
+            pauseExecution(); // Pause execution
+            system("clear");
+            break;
+        }
+        case 4:
+        {
+            return 0; // Exit program
+        }
+        default:
+        {
+            cout << "Invalid input. Please try again." << endl;
+            system("pause");
+            system("clear");
+            break;
+        }
+        }
+
+    } while (true);
+
+    return 0;
+}
