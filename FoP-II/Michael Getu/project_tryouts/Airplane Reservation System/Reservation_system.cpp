@@ -6,10 +6,10 @@ using namespace std;
 int main() {
   Flight flight;
   while (true) {
+    read(flight);
     showMenu();
     cout << "Enter your choice: ";
     int choice = getChoice();
-
     switch (choice) {
       case 1:
         bookFlight(flight);
