@@ -1,5 +1,5 @@
 #include <iostream>
-#include"local_lib2.h"
+#include"local_lib.h"
 using namespace std;
 
 int main() {
