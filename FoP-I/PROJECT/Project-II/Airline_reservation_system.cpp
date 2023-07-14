@@ -37,6 +37,7 @@ int main() {
 		cout<<"\t*********************************************************************************************"<<endl;
 		cout<<"   Enter your choice here : "; //ask the user to choice among the main option
 		cin>>main_choice;
+		switch(main_choice)
 		if(main_choice==1) {
             main_choice1(person);
         }
