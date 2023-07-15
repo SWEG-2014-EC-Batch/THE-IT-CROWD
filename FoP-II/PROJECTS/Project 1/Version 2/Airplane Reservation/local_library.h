@@ -1,7 +1,40 @@
-//1
+#ifndef LOCAL_LIB_H
+#define LOCAL_LIB_H
+#include<iostream>
+#include <fstream>
+using namespace std;
 
+const int MAX_FIRST_CLASS = 30;
+const int MAX_ECONOMY = 100;
 
-//2
+struct Passenger {
+  string name;
+  char sex;
+  int age = 0;
+  string passportNumber;
+  char classChoice;
+};
+
+struct Flight {
+  int firstClassCount;
+  int economyClassCount;
+  Passenger firstClass[MAX_FIRST_CLASS];
+  Passenger economyClass[MAX_ECONOMY];
+};
+
+void write(Passenger person){
+    fstream file;
+    (person.classChoice=='F')?(file.open("files/firstClassList.txt",ios::in|ios::out)):(file.open("files/economicClassList.txt",ios::in|ios::out));
+    if(!file.is_open()){
+        cout<<"\acould not be opened"<<endl;
+    }
+    else{
+        file.seekp(0, ios::end);
+        file<<person.passportNumber<<" "<<person.name<<" "<<person.age<<" "<<person.sex<<endl;
+    }
+    file.close();
+}
+
 void read(Flight& flight){
     fstream file;
     file.open("files/firstClassList.txt",ios::in|ios::out);
@@ -74,17 +107,73 @@ void addPassenger(Flight flight, Passenger& passenger, char isFirstClass) {
   }
 }
 
-
-
-
 //3
 
 
 
+
+
 //4
+void showMenu() {
+  cout << "*********************************************************************************************"
+       << endl;
+  cout << "*___________________________________________________________________________________________*"
+       << endl;
+  cout << "*                               Airline Reservation System                                  *"
+       << endl;
+  cout << "*___________________________________________________________________________________________*"
+       << endl;
+  cout << "*  Book a flight------------------------------------------------------------------------[1] *"
+       << endl;
+  cout << "*___________________________________________________________________________________________*"
+       << endl;
+  cout << "*  Search for attendance----------------------------------------------------------------[2] *"
+       << endl;
+  cout << "*___________________________________________________________________________________________*"
+       << endl;
+  cout << "*  List all passengers------------------------------------------------------------------[3] *"
+       << endl;
+  cout << "*___________________________________________________________________________________________*"
+       << endl;
+  cout << "*  Exit---------------------------------------------------------------------------------[4] *"
+       << endl;
+  cout << "*___________________________________________________________________________________________*"
+       << endl;
+}
 
+int getChoice() {
+  int choice;
+  cin >> choice;
+  return choice;
+}
 
+void bookFlight(Flight flight) {
+    Passenger person;
+  cout << endl;
+  // Prompt the user for passenger details
+  //string name, passportNumber;
+  char sex;
+  int age;
+  cout << "Enter passenger name: ";
+  cin.ignore();
+  getline(cin, person.name);
+  cout << "Enter passenger sex (m/f): ";
+  cin >> person.sex;
+  cout << "Enter passenger age: ";
+  cin >> person.age;
+  cout << "Enter passport number: ";
+  cin >> person.passportNumber;
+  cout << "Select class (F - First Class, E - Economy): ";
+  char classChoice;
+  cin >> classChoice;
+  person.classChoice = toupper(classChoice );
 
+  // Create the passenger object
+  //Passenger passenger{name, sex, age, passportNumber};
+
+  // Add the passenger to the flight
+  addPassenger(flight, person, classChoice);
+}
 
 void searchPassport(Flight& flight) {
   cout << endl;
