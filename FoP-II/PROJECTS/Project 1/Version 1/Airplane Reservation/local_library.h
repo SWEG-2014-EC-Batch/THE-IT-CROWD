@@ -9,10 +9,18 @@ const int MAX_ECONOMY = 100;
 
 //2
 
+
+
+
 //3
 
 
+
+
+
 //1
+
+
 
 
 
