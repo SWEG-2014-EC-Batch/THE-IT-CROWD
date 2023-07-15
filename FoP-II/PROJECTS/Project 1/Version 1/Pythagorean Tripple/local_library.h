@@ -42,7 +42,28 @@ int getChoice() {
 
 //3
 
+// Print Pythagorean triples table
+void printPythagoreanTable() {
+  cout << "\nPythagorean triples table:\n" << endl;
+  cout << "Side 1\tSide 2\tHypotenuse" << endl;
+  cout << "______________________________" << endl;
 
+  for (int side1 = 1; side1 <= 100; side1++) {
+    for (int side2 = 1; side2 <= 100; side2++) {
+      for (int hypotenuse = 1; hypotenuse <= 100; hypotenuse++) {
+        int side1Square = side1 * side1;
+        int side2Square = side2 * side2;
+        int hypotenuseSquare = hypotenuse * hypotenuse;
+
+        if (side1Square + side2Square == hypotenuseSquare) {
+          cout << side1 << "\t" << side2 << "\t" << hypotenuse << endl;
+        }
+      }
+    }
+  }
+
+  cout << endl;
+}
 
 
 // Input and print a triangle
