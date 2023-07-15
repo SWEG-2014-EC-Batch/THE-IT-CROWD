@@ -41,10 +41,5 @@ void printSecondHalf(int n) {
         cout << endl;
     }
 }
-
-
-
-
-
 #endif
 
