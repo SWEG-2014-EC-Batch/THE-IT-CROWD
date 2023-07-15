@@ -42,8 +42,32 @@ int getChoice() {
 
 //3
 
-//4
 
+
+
+// Input and print a triangle
+void inputAndPrintTriangle() {
+  Triangle triangle;
+
+  cout << "\nEnter the sides of the triangle:" << endl;
+  cout << "Side 1: ";
+  cin >> triangle.side1;
+  cout << "Side 2: ";
+  cin >> triangle.side2;
+  cout << "Hypotenuse: ";
+  cin >> triangle.hypotenuse;
+
+  cout << "\nTriangle information:" << endl;
+  printTriangle(triangle);
+
+  if (isPythagorean(triangle)) {
+    cout << "This triangle is a Pythagorean triangle." << endl;
+  } else {
+    cout << "This triangle is not a Pythagorean triangle." << endl;
+  }
+
+  cout << endl;
+}
 
 // Print triangle sides
 void printTriangle(Triangle t) {
