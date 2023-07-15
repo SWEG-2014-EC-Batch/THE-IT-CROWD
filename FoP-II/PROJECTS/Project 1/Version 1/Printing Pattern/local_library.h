@@ -11,7 +11,18 @@ void printSecondHalf(int n);
 
 
 //2
-
+void printFirstHalf(int n) {
+    for (int i = n; i >= 1; i--) {
+        printChars(' ', n - i);
+        for (int j = i; j >= 1; j--) {
+            cout << char('A' + j - 1) << ' ';
+        }
+        for (int j = 2; j <= i; j++) {
+            cout << char('A' + j - 1) << ' ';
+        }
+        cout << endl;
+    }
+}
 
 //3
 
