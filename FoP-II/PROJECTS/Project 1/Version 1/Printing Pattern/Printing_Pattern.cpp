@@ -1,6 +1,6 @@
 
 #include <iostream>
-#include"local_lib1.h"
+#include"local_library.h"
 using namespace std;
 
 int main() {
