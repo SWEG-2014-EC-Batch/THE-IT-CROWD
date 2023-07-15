@@ -85,18 +85,6 @@ void printPassengers(const Flight& flight) {
   }
 }
 
-
-
-
-
-
-
-//1
-
-
-
-
-
 void bookFlight(Flight& flight) {
   cout << endl;
   // Prompt the user for passenger details
