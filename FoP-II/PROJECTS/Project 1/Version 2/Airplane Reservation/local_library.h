@@ -107,7 +107,6 @@ void addPassenger(Flight flight, Passenger& passenger, char isFirstClass) {
   }
 }
 
-//3
 
 Passenger* getPassenger(Flight& flight, const string& passportNumber) {
   for (int i = 0; i < flight.firstClassCount; i++) {
@@ -142,14 +141,6 @@ void printPassengers(const Flight& flight) {
   }
 }
 
-
-
-
-
-
-
-
-//4
 void showMenu() {
   cout << "*********************************************************************************************"
        << endl;
