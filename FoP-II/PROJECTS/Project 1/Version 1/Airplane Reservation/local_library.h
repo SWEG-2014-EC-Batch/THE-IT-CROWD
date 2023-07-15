@@ -9,6 +9,62 @@ const int MAX_ECONOMY = 100;
 
 //2
 
+struct Passenger {
+  string name;
+  char sex;
+  int age;
+  string passportNumber;
+};
+
+struct Flight {
+  int firstClassCount;
+  int economyClassCount;
+  Passenger firstClass[MAX_FIRST_CLASS];
+  Passenger economyClass[MAX_ECONOMY];
+};
+
+void addPassenger(Flight& flight, const Passenger& passenger, int isFirstClass) {
+  if (isFirstClass==1) {
+    if (flight.firstClassCount < MAX_FIRST_CLASS) {
+      flight.firstClass[flight.firstClassCount++] = passenger;
+      cout << "Booking confirmed. Seat number: " << flight.firstClassCount << " (First Class)" << endl;
+    } else {
+      cout << "First class is full. Do you want to book an economy class? (y/n): ";
+      char choice;
+      cin >> choice;
+      if (choice == 'y' || choice == 'Y') {
+        addPassenger(flight, passenger, false);
+      } else {
+        cout << "Next flight leaves in 3 hours." << endl;
+      }
+    }
+  } else if (isFirstClass ==2) {
+    if (flight.economyClassCount < MAX_ECONOMY) {
+      flight.economyClass[flight.economyClassCount++] = passenger;
+      cout << "Booking confirmed. Seat number: " << flight.economyClassCount << " (Economy Class)" << endl;
+    } else {
+      cout << "Economy class is full. Next flight leaves in 3 hours." << endl;
+    }
+  } else {
+    cout << "Error input.";
+  }
+}
+
+Passenger* getPassenger(Flight& flight, const string& passportNumber) {
+  for (int i = 0; i < flight.firstClassCount; i++) {
+    if (flight.firstClass[i].passportNumber == passportNumber) {
+      return &flight.firstClass[i];
+    }
+  }
+  for (int i = 0; i < flight.economyClassCount; i++) {
+    if (flight.economyClass[i].passportNumber == passportNumber) {
+      return &flight.economyClass[i];
+    }
+  }
+  return nullptr;
+}
+
+
 
 
 
