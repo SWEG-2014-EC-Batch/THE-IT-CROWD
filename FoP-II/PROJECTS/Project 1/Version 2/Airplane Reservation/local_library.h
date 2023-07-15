@@ -109,6 +109,42 @@ void addPassenger(Flight flight, Passenger& passenger, char isFirstClass) {
 
 //3
 
+Passenger* getPassenger(Flight& flight, const string& passportNumber) {
+  for (int i = 0; i < flight.firstClassCount; i++) {
+    if (flight.firstClass[i].passportNumber == passportNumber) {
+      return &flight.firstClass[i];
+    }
+  }
+  for (int i = 0; i < flight.economyClassCount; i++) {
+    if (flight.economyClass[i].passportNumber == passportNumber) {
+      return &flight.economyClass[i];
+    }
+  }
+  return nullptr;
+}
+
+void printPassengers(const Flight& flight) {
+  for (int i = 0; i < flight.firstClassCount; i++) {
+    cout << "Passenger " << i + 1 << " (First Class)" << endl;
+    cout << "Name: " << flight.firstClass[i].name << endl;
+    cout << "Sex: " << flight.firstClass[i].sex << endl;
+    cout << "Age: " << flight.firstClass[i].age << endl;
+    cout << "Passport number: " << flight.firstClass[i].passportNumber << endl;
+    cout << "-------------------------------------------" << endl;
+  }
+  for (int i = 0; i < flight.economyClassCount; i++) {
+    cout << "Passenger " << i + 1 << " (Economy Class)" << endl;
+    cout << "Name: " << flight.economyClass[i].name << endl;
+    cout << "Sex: " << flight.economyClass[i].sex << endl;
+    cout << "Age: " << flight.economyClass[i].age << endl;
+    cout << "Passport number: " << flight.economyClass[i].passportNumber << endl;
+    cout << "-------------------------------------------" << endl;
+  }
+}
+
+
+
+
 
 
 
