@@ -8,7 +8,12 @@ void printFirstHalf(int n);
 void printSecondHalf(int n);
 
 //1
-
+// Function to print a sequence of spaces multiple times
+void printChars(char ch, int count) {
+    for (int i = 0; i < count; i++) {
+        cout << "  ";
+    }
+}
 
 //2
 void printFirstHalf(int n) {
