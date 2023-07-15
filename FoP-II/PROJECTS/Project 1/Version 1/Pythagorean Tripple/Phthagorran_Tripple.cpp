@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cmath>
-#include"local_lib.h"
+#include"local_library.h"
 using namespace std;
 int main() {
   int choice;
