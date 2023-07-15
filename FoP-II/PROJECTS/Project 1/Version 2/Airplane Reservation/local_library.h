@@ -2,6 +2,78 @@
 
 
 //2
+void read(Flight& flight){
+    fstream file;
+    file.open("files/firstClassList.txt",ios::in|ios::out);
+    int i =0;
+    if(!file.is_open()){
+        cout<<"\acould not be opened"<<endl;
+    }
+    else{
+        while(file.eof() == false){
+            file>>flight.firstClass[i].passportNumber>>flight.firstClass[i].name>> flight.firstClass[i].age>>flight.firstClass[i].sex;
+            cout<<flight.firstClass[i].passportNumber<<flight.firstClass[i].name<< flight.firstClass[i].age<<flight.firstClass[i].sex<<endl;
+            if(flight.firstClass[i].age != 0){
+                    i++;
+            }
+            else{
+                break;
+            }
+        }
+    }
+    flight.firstClassCount = i;
+    file.close();
+
+    i =0;
+    file.open("files/economicClassList.txt",ios::in|ios::out);
+    if(!file.is_open()){
+        cout<<"\acould not be opened"<<endl;
+    }
+    else{
+        while(file.eof() == false){
+            file>>flight.economyClass[i].passportNumber>>flight.economyClass[i].name>> flight.economyClass[i].age>>flight.economyClass[i].sex;
+            if(flight.economyClass[i].age !=0){
+                i++;
+            }
+            else{
+                break;
+            }
+        }
+    }
+    flight.economyClassCount = i;
+    file.close();
+}
+
+void addPassenger(Flight flight, Passenger& passenger, char isFirstClass) {
+  if (isFirstClass=='F') {
+    if (flight.firstClassCount < MAX_FIRST_CLASS) {
+      flight.firstClass[flight.firstClassCount++] = passenger;
+      cout << "Booking confirmed. Seat number: " << flight.firstClassCount << " (First Class)" << endl;
+      write(passenger);
+    } else {
+      cout << "First class is full. Do you want to book an economy class? (y/n): ";
+      char choice;
+      cin >> choice;
+      if (choice == 'y' || choice == 'Y') {
+        passenger.classChoice = 'E';
+        addPassenger(flight, passenger, passenger.classChoice);
+      } else {
+        cout << "Next flight leaves in 3 hours." << endl;
+      }
+    }
+  } else if (isFirstClass == 'E') {
+    if (flight.economyClassCount < MAX_ECONOMY) {
+      flight.economyClass[flight.economyClassCount++] = passenger;
+      cout << "Booking confirmed. Seat number: " << flight.economyClassCount << " (Economy Class)" << endl;
+      write(passenger);
+    } else {
+      cout << "Economy class is full. Next flight leaves in 3 hours." << endl;
+    }
+  } else {
+    cout << "Error input.";
+  }
+}
+
 
 
 
