@@ -44,7 +44,6 @@ void read(Flight& flight){
     else{
         while(file.eof() == false){
             file>>flight.firstClass[i].passportNumber>>flight.firstClass[i].name>> flight.firstClass[i].age>>flight.firstClass[i].sex;
-            cout<<flight.firstClass[i].passportNumber<<flight.firstClass[i].name<< flight.firstClass[i].age<<flight.firstClass[i].sex<<endl;
             if(flight.firstClass[i].age != 0){
                     i++;
             }
