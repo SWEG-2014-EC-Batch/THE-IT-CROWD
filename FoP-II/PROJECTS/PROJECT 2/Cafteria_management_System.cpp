@@ -251,6 +251,113 @@ public:
 
 
 //2 -  addis
+class IngredientManager {
+public:
+    void readIngredientsFromFile(const string& filename) {
+        ifstream file(filename);
+        if (!file) {
+            cerr << "Error: Could not open ingredients file " << filename << endl;
+            return;
+        }
+
+        ingredients.clear(); // Clear existing ingredients
+
+        string name;
+        double quantity;
+        double costPerUnit;
+        double lowStockThreshold;
+
+        while (file >> name >> quantity >> costPerUnit >> lowStockThreshold) {
+            Ingredient ingredient{name, quantity, costPerUnit, lowStockThreshold};
+            ingredients.push_back(ingredient);
+        }
+
+        file.close();
+    }
+
+    void saveIngredientsToFile(const string& filename) {
+        ofstream file(filename);
+        if (!file) {
+            cerr << "Error: Could not open ingredients file " << filename << endl;
+            return;
+        }
+
+        for (const Ingredient& ingredient : ingredients) {
+            file << ingredient.name << " "
+                 << ingredient.quantity << " "
+                 << ingredient.costPerUnit << " "
+                 << ingredient.lowStockThreshold << "\n";
+        }
+
+        file.close();
+    }
+
+    void displayIngredients() {
+        cout << "Ingredients:\n";
+        cout << "------------------------------------------------\n";
+        cout << "Name            Quantity   Cost/Unit   Low Stock\n";
+        cout << "------------------------------------------------\n";
+
+        for (const Ingredient& ingredient : ingredients) {
+            cout << setw(16) << ingredient.name << " "
+                      << setw(10) << ingredient.quantity << " "
+                      << setw(10) << ingredient.costPerUnit << " "
+                      << setw(10) << ingredient.lowStockThreshold << "\n";
+        }
+
+        cout << "------------------------------------------------\n";
+    }
+
+    void addIngredient() {
+        string name;
+        double quantity;
+        double costPerUnit;
+        double lowStockThreshold;
+
+        cout << "Enter Ingredient Name: ";
+        cin.ignore();
+        getline(cin, name);
+
+        cout << "Enter Quantity: ";
+        cin >> quantity;
+
+        cout << "Enter Cost Per Unit: ";
+        cin >> costPerUnit;
+
+        cout << "Enter Low Stock Threshold: ";
+        cin >> lowStockThreshold;
+
+        Ingredient ingredient{name, quantity, costPerUnit, lowStockThreshold};
+        ingredients.push_back(ingredient);
+
+        cout << "Ingredient added successfully!\n";
+    }
+
+    void restockIngredients() {
+        string name;
+        double quantityToAdd;
+
+        cout << "Enter Ingredient Name to Restock: ";
+        cin.ignore();
+        getline(cin, name);
+
+        cout << "Enter Quantity to Add: ";
+        cin >> quantityToAdd;
+
+        for (Ingredient& ingredient : ingredients) {
+            if (ingredient.name == name) {
+                ingredient.quantity += quantityToAdd;
+                cout << "Ingredient restocked successfully!\n";
+                return;
+            }
+        }
+
+        cout << "Ingredient not found.\n";
+    }
+};
+
+
+
 
 //3 - messi 
 class PrepaidCardManager {
@@ -501,6 +608,201 @@ public:
 
 
 //6 - addis 2 
+// Function to handle menu operations
+void menuOperations(MenuManager& menuManager) {
+    int menuChoice;
+    do {
+        cout << "\nMenu Operations:\n";
+        cout << "1. Display Menu\n";
+        cout << "2. Add Menu Item\n";
+        cout << "3. Restock Menu Item\n";
+        cout << "4. Return to Main Menu\n";
+        cout << "Enter your choice: ";
+        cin >> menuChoice;
+
+        switch (menuChoice) {
+            case 1:
+                menuManager.displayMenu();
+                break;
+            case 2:
+                menuManager.addMenuItem();
+                menuManager.saveMenuToFile("menu.txt");
+                break;
+            case 3:
+                menuManager.restockMenuItem();
+                menuManager.saveMenuToFile("menu.txt");
+                break;
+            case 4:
+                cout << "Returning to the main menu...\n";
+                break;
+            default:
+                cout << "Invalid choice. Please try again.\n";
+                break;
+        }
+    } while (menuChoice != 4);
+}
+
+// Function to handle ingredient operations
+void ingredientOperations(IngredientManager& ingredientManager) {
+    int ingredientChoice;
+    do {
+        cout << "\nIngredient Operations:\n";
+        cout << "1. Display Ingredients\n";
+        cout << "2. Add Ingredient\n";
+        cout << "3. Restock Ingredients\n";
+        cout << "4. Return to Main Menu\n";
+        cout << "Enter your choice: ";
+        cin >> ingredientChoice;
+
+        switch (ingredientChoice) {
+            case 1:
+                ingredientManager.displayIngredients();
+                break;
+            case 2:
+                ingredientManager.addIngredient();
+                ingredientManager.saveIngredientsToFile("ingredients.txt");
+                break;
+            case 3:
+                ingredientManager.restockIngredients();
+                ingredientManager.saveIngredientsToFile("ingredients.txt");
+                break;
+            case 4:
+                cout << "Returning to the main menu...\n";
+                break;
+            default:
+                cout << "Invalid choice. Please try again.\n";
+                break;
+        }
+    } while (ingredientChoice != 4);
+}
+
+// Function to handle prepaid card operations
+void prepaidCardOperations(PrepaidCardManager& prepaidCardManager) {
+    int cardChoice;
+    do {
+        cout << "\nPrepaid Card Operations:\n";
+        cout << "1. Display Prepaid Cards\n";
+        cout << "2. Add Prepaid Card\n";
+        cout << "3. to recharge Prepaid cards\n";
+        cout<<  "4. Return to Main Menu\n";
+        cout << "Enter your choice: ";
+        cin >> cardChoice;
+
+        switch (cardChoice) {
+            case 1:
+                prepaidCardManager.displayPrepaidCards();
+                break;
+            case 2:
+                prepaidCardManager.addPrepaidCard();
+                prepaidCardManager.savePrepaidCardsToFile("prepaid_cards.txt");
+                break;
+            case 3:
+                prepaidCardManager.rechargePrepaidCard();
+                prepaidCardManager.savePrepaidCardsToFile("prepaid_cards.txt");
+            case 4:
+                cout << "Returning to the main menu...\n";
+                break;
+            default:
+                cout << "Invalid choice. Please try again.\n";
+                break;
+        }
+    } while (cardChoice != 4);
+}
+
+// Function to handle business operations
+void performBusinessOperations() {
+    BusinessManager businessManager;
+    RemoteOrderManager remoteOrderManager;
+    double totalSales = 0.0;
+    int businessChoice;
+
+    do {
+        cout << "\nBusiness Operations:\n";
+        cout << "1. Calculate Sales\n";
+        cout << "2. Display Remote Sold Items\n";
+        cout << "3. Return to Main Menu\n";
+        cout << "Enter your choice: ";
+        cin >> businessChoice;
+
+        switch (businessChoice) {
+            case 1:
+                businessManager.loadSalesFromFile("sales.txt", totalSales);
+                cout << "----------------------\n";
+                cout << "Current Capital\n";
+                cout << "----------------------\n";
+                cout<<totalSales<<endl;
+                totalSales=0;
+                cout << "----------------------\n";
+
+                businessManager.saveSalesToFile("sales.txt", totalSales, businessManager.loadPreviousIncome());
+                break;
+            case 2:
+                remoteOrderManager.loadRemoteSoldItemsFromFile("remote_sold_items.txt", remoteSoldItems);
+                remoteOrderManager.displayRemoteSoldItems(remoteSoldItems);
+                break;
+            case 3:
+                cout << "Returning to the main menu...\n";
+
+                break;
+            default:
+                cout << "Invalid choice. Please try again.\n";
+                break;
+            cout<<endl;
+        }
+    } while (businessChoice != 3);
+}
+
+// Function to run the main menu
+void runMainMenu(MenuManager& menuManager, IngredientManager& ingredientManager, PrepaidCardManager& prepaidCardManager, BusinessManager& businessManager, RemoteOrderManager& remoteOrderManager, double& totalSales) {
+    int mainChoice;
+
+    do {
+        system("cls");
+        cout << "\nMain Menu:\n";
+        cout << "1. Menu Operations\n";
+        cout << "2. Ingredient Operations\n";
+        cout << "3. Prepaid Card Operations\n";
+        cout << "4. Remote Order\n";
+        cout << "5. Business Operations\n";
+        cout << "6. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> mainChoice;
+
+        switch (mainChoice) {
+            case 1:
+                system("cls");
+                menuOperations(menuManager);
+                break;
+            case 2:
+                system("cls");
+                ingredientOperations(ingredientManager);
+                break;
+            case 3:
+                system("cls");
+                prepaidCardOperations(prepaidCardManager);
+                break;
+            case 4:
+                system("cls");
+                remoteOrderManager.remoteOrder(prepaidCardManager);
+                menuManager.saveMenuToFile("menu.txt");
+                remoteOrderManager.saveRemoteSoldItemsToFile("remote_sold_items.txt", remoteSoldItems);
+                break;
+            case 5:
+                system("cls");
+                // Call the business operations function
+                performBusinessOperations();
+                break;
+            case 6:
+                cout << "Exiting the program...\n";
+                break;
+            default:
+                cout << "Invalid choice. Please try again.\n";
+                break;
+        }
+    } while (mainChoice != 6);
+}
+
+
 
 //7 - siyamgrn 2
 
