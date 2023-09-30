@@ -456,6 +456,65 @@ public:
     }
 };
 
+class BusinessManager {
+public:
+
+    void loadSalesFromFile(const string& filename, double& totalSales) {
+        ifstream file(filename);
+        if (!file) {
+            cerr << "Error: Could not open sales file " << filename << endl;
+            return;
+        }
+
+        while (file >> totalSales) {
+            file >> totalSales;
+        }
+
+        file.close();
+
+    }
+
+    double loadPreviousIncome(){
+        double income;
+        ifstream file("sales.txt", ios::in);
+        if (file.is_open()==false) {
+            cerr << "Error: Could not open sales file sales.txt" << endl;
+            return 0;
+        }
+
+        file >> income;
+        return income;
+        file.close();
+    }
+
+    // Additional functions to save and load sales and low stock data
+    void saveSalesToFile(const string& filename, double totalSales, double previousIncome) {
+        ofstream file(filename);
+        if (!file) {
+            cerr << "Error: Could not open sales file " << filename << endl;
+            return;
+        }
+
+        file << totalSales+previousIncome << endl;
+
+        file.close();
+    }
+
+    void loadLowStockFromFile(const string& filename) {
+        ifstream file(filename);
+        if (!file) {
+            cerr << "Error: Could not open low stock file " << filename << endl;
+            return;
+        }
+
+        string line;
+        while (getline(file, line)) {
+            cout << line << "\n";
+        }
+
+        file.close();
+    }
+};
 
 //4 - siyamregn
 
@@ -805,5 +864,25 @@ void runMainMenu(MenuManager& menuManager, IngredientManager& ingredientManager,
 
 
 //7 - siyamgrn 2
+int main() {
+    double totalSales = 0.0;
+
+    // Create instances of managers
+    MenuManager menuManager;
+    IngredientManager ingredientManager;
+    PrepaidCardManager prepaidCardManager;
+    BusinessManager businessManager;
+    RemoteOrderManager remoteOrderManager;
+
+    // Read data from files
+    menuManager.readMenuFromFile("menu.txt");
+    ingredientManager.readIngredientsFromFile("ingredients.txt");
+    prepaidCardManager.readPrepaidCardsFromFile("prepaid_cards.txt");
+
+    runMainMenu(menuManager, ingredientManager, prepaidCardManager, businessManager, remoteOrderManager, totalSales);
+
+    return 0;
+}
+
 
 
