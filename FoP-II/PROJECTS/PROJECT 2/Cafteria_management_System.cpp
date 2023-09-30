@@ -1,6 +1,254 @@
  
 
 //1 - workneh
+#include <iostream>
+#include <vector>
+#include <string>
+#include <fstream>
+#include <map>
+#include <iomanip>
+using namespace std;
+
+struct Ingredient {
+    string name;
+    double quantity;
+    double costPerUnit;
+    double lowStockThreshold;
+};
+
+// Define structs for MenuItem, Ingredient, and PrepaidCard
+struct MenuItem {
+    int itemID;
+    string name;
+    double price;
+    int quantity;
+    string category;
+     vector<Ingredient> ingredients;
+};
+
+struct PrepaidCard {
+    int cardNumber;
+    double balance;
+};
+
+struct DeliveryInfo {
+    string address;
+    string additionalInfo;
+};
+
+// Define a struct to represent remotely sold items
+struct RemoteSoldItem {
+    string itemName;
+    string address;
+    int quantity;
+    double totalIncome;
+};
+
+// Global container for remotely sold items
+vector<RemoteSoldItem> remoteSoldItems;
+
+// Global containers for menu items, ingredients, and prepaid cards
+vector<MenuItem> menu;
+vector<Ingredient> ingredients;
+vector<PrepaidCard> prepaidCards;
+
+// Maps to track low stock ingredients and categorize sales
+map<string, int> ingredientLowStock;
+map<string, double> categorySales;
+
+// Class to manage menu operations
+class MenuManager {
+public:
+    void readMenuFromFile(const string& filename) {
+        ifstream file(filename);
+        if (!file) {
+            cerr << "Error: Could not open menu file " << filename << endl;
+            return;
+        }
+
+        menu.clear(); // Clear existing menu items
+
+        int itemID;
+        string name;
+        double price;
+        int quantity;
+        string category;
+
+        while (file >> itemID >> name >> price >> quantity >> category) {
+            MenuItem menuItem{itemID, name, price, quantity, category};
+            menu.push_back(menuItem);
+        }
+
+        file.close();
+    }
+
+    void saveMenuToFile(const string& filename) {
+        ofstream file(filename);
+        if (!file) {
+            cerr << "Error: Could not open menu file " << filename << endl;
+            return;
+        }
+
+        for (const MenuItem& menuItem : menu) {
+            file << menuItem.itemID << " "
+                 << menuItem.name << " "
+                 << menuItem.price << " "
+                 << menuItem.quantity << " "
+                 << menuItem.category << "\n";
+        }
+
+        file.close();
+    }
+
+    void displayMenu() {
+        cout << "Menu Items:\n";
+        cout << "-------------------------------------------------\n";
+        cout << "ID   Name             Price     Quantity   Category\n";
+        cout << "-------------------------------------------------\n";
+
+        for (const MenuItem& menuItem : menu) {
+            cout << setw(4) << menuItem.itemID << " "
+                      << setw(16) << menuItem.name << " "
+                      << setw(8) << menuItem.price << " "
+                      << setw(10) << menuItem.quantity << " "
+                      << menuItem.category << "\n";
+        }
+
+        cout << "-------------------------------------------------\n";
+    }
+
+    void addMenuItem() {
+    int itemID;
+    string name;
+    double price;
+    int quantity;
+    string category;
+// Create a new MenuItem object
+    MenuItem menuItem{itemID, name, price, quantity, category};
+
+    Ingredient ingredient; // Create an Ingredient object
+    cout << "Enter Item ID: ";
+    cin >> itemID;
+
+    // Check if the entered itemID already exists in the menu
+    for (const MenuItem& menuItem : menu) {
+        if (menuItem.itemID == itemID) {
+            cout << "Item with the same ID already exists. Please enter a unique Item ID.\n";
+            return; // Exit the function without adding the item
+        }
+    }
+
+    cout << "Enter Item Name: ";
+    cin.ignore();
+    getline(cin, name);
+
+    cout << "Enter Price: ";
+    cin >> price;
+
+    cout << "Enter Quantity: ";
+    cin >> quantity;
+
+    cout << "Enter Category: ";
+    cin.ignore();
+    getline(cin, category);
+
+    // Add ingredients for this menu item
+    int numIngredients;
+    cout << "Enter the number of ingredients for this item: ";
+    cin >> numIngredients;
+
+    for (int i = 0; i < numIngredients; ++i) {
+        string ingredientName;
+        double ingredientQuantity;
+        double ingredientCostPerUnit;
+        double ingredientLowStockThreshold;
+
+        cout << "Enter Ingredient Name: ";
+        cin.ignore();
+        getline(cin, ingredientName);
+
+        cout << "Enter Ingredient Quantity: ";
+        cin >> ingredientQuantity;
+
+        cout << "Enter Ingredient Cost Per Unit: ";
+        cin >> ingredientCostPerUnit;
+
+        cout << "Enter Ingredient Low Stock Threshold: ";
+        cin >> ingredientLowStockThreshold;
+
+        Ingredient ingredient{ingredientName, ingredientQuantity, ingredientCostPerUnit, ingredientLowStockThreshold};
+
+        // Add the ingredient to the menu item's ingredients list
+        menuItem.ingredients.push_back(ingredient);
+    }
+
+    // Add the new menu item to the menu
+    menu.push_back(menuItem);
+
+    cout << "Menu Item added successfully!\n";
+}
+    void decrementMenuItemQuantity(int itemID, int quantityToSubtract) {
+        for (MenuItem& menuItem : menu) {
+            if (menuItem.itemID == itemID) {
+                if (menuItem.quantity >= quantityToSubtract) {
+                    menuItem.quantity -= quantityToSubtract;
+                    cout << "Quantity updated successfully!\n";
+                } else {
+                    cout << "Insufficient quantity in stock.\n";
+                }
+                return;
+            }
+        }
+        cout << "Item not found in the menu.\n";
+    }
+
+    double loadPreviousIncome(){
+        double income;
+        ifstream file("sales.txt", ios::in);
+        if (file.is_open()==false) {
+            cerr << "Error: Could not open sales file sales.txt" << endl;
+            return 0;
+        }
+
+        file >> income;
+        return income;
+        file.close();
+    }
+
+    // Additional functions to save and load sales and low stock data
+    void saveSalesToFile(const string& filename, double totalSales, double previousIncome) {
+        ofstream file(filename);
+        if (!file) {
+            cerr << "Error: Could not open sales file " << filename << endl;
+            return;
+        }
+        file << totalSales+previousIncome << endl;
+        file.close();
+    }
+
+    void restockMenuItem() {
+        int restockItemID;
+        int restockQuantity;
+
+        cout << "Enter Item ID to Restock: ";
+        cin >> restockItemID;
+
+        cout << "Enter Quantity to Add: ";
+        cin >> restockQuantity;
+
+        for (MenuItem& menuItem : menu) {
+            if (menuItem.itemID == restockItemID) {
+                menuItem.quantity += restockQuantity;
+                cout << "Menu item restocked successfully!\n";
+                saveSalesToFile("sales.txt", -restockQuantity*menuItem.price, loadPreviousIncome());
+                return;
+            }
+        }
+        cout << "Item not found in the menu.\n";
+    }
+};
+
+
 
 //2 -  addis
 
