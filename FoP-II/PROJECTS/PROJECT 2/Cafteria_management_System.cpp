@@ -253,6 +253,102 @@ public:
 //2 -  addis
 
 //3 - messi 
+class PrepaidCardManager {
+public:
+    void readPrepaidCardsFromFile(const string& filename) {
+        ifstream file(filename);
+        if (!file) {
+            cerr << "Error: Could not open prepaid cards file " << filename << endl;
+            return;
+        }
+
+        prepaidCards.clear(); // Clear existing prepaid cards
+
+        int cardNumber;
+        double balance;
+
+        while (file >> cardNumber >> balance) {
+            PrepaidCard card{cardNumber, balance};
+            prepaidCards.push_back(card);
+        }
+
+        file.close();
+    }
+
+    void savePrepaidCardsToFile(const string& filename) {
+        ofstream file(filename);
+        if (!file) {
+            cerr << "Error: Could not open prepaid cards file " << filename << endl;
+            return;
+        }
+
+        for (const PrepaidCard& card : prepaidCards) {
+            file << card.cardNumber << " " << card.balance << "\n";
+        }
+
+        file.close();
+    }
+
+    void displayPrepaidCards() {
+        cout << "Prepaid Cards:\n";
+        cout << "----------------------\n";
+        cout << "Card Number   Balance\n";
+        cout << "----------------------\n";
+
+        for (const PrepaidCard& card : prepaidCards) {
+            cout << setw(12) << card.cardNumber << " "
+                      << setw(8) << card.balance << "\n";
+        }
+
+        cout << "----------------------\n";
+    }
+
+    void addPrepaidCard() {
+        int cardNumber;
+        double balance;
+
+        cout << "Enter Card Number: ";
+        cin >> cardNumber;
+
+        cout << "Enter Initial Balance: ";
+        cin >> balance;
+
+        PrepaidCard card{cardNumber, balance};
+        prepaidCards.push_back(card);
+
+        cout << "Prepaid Card added successfully!\n";
+    }
+
+    void rechargePrepaidCard() {
+        int cardNumber;
+        int balance;
+
+        cout << "Enter card number to Recharge: ";
+        cin >> cardNumber;
+
+        cout << "Enter the amount of money you want to Add: ";
+        cin >> balance;
+
+        for (PrepaidCard& prepaidCard : prepaidCards) {
+            if (prepaidCard.cardNumber == cardNumber) {
+                prepaidCard.balance += balance;
+                cout << "card recharged successfully!\n";
+                return;
+            }
+        }
+        cout << "Item not found in the menu.\n";
+    }
+
+    PrepaidCard* findPrepaidCard(int cardNumber) {
+        for (PrepaidCard& card : prepaidCards) {
+            if (card.cardNumber == cardNumber) {
+                return &card; // Return a pointer to the found card
+            }
+        }
+        return nullptr; // Card not found
+    }
+};
+
 
 //4 - siyamregn
 
