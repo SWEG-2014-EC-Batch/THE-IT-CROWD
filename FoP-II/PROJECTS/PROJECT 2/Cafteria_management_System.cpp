@@ -24,6 +24,13 @@ struct MenuItem {
     int quantity;
     string category;
      vector<Ingredient> ingredients;
+
+ MenuItem(int id, const string& n, double p, int q, const string& cat) :
+        itemID(id), name(n), price(p), quantity(q), category(cat) {}
+
+    void addIngredient(const Ingredient& ingredient) {
+        ingredients.push_back(ingredient);
+    }
 };
 
 struct PrepaidCard {
@@ -76,6 +83,15 @@ public:
 
         while (file >> itemID >> name >> price >> quantity >> category) {
             MenuItem menuItem{itemID, name, price, quantity, category};
+          // Read and add ingredients
+        int numIngredients;
+        file >> numIngredients;
+        file.ignore(); // Consume the newline character after numIngredients
+        for (int i = 0; i < numIngredients; ++i) {
+            Ingredient ingredient;
+            file >> ingredient.name >> ingredient.quantity >> ingredient.costPerUnit >> ingredient.lowStockThreshold;
+            menuItem.addIngredient(ingredient);
+        }
             menu.push_back(menuItem);
         }
 
@@ -94,7 +110,16 @@ public:
                  << menuItem.name << " "
                  << menuItem.price << " "
                  << menuItem.quantity << " "
-                 << menuItem.category << "\n";
+                 << menuItem.category << " ";
+         
+        // Write ingredients
+        for (const Ingredient& ingredient : menuItem.ingredients) {
+            file << ingredient.name << " "
+                 << ingredient.quantity << " "
+                 << ingredient.costPerUnit << " "
+                 << ingredient.lowStockThreshold << " ";
+        }
+        file << "\n";
         }
 
         file.close();
@@ -152,6 +177,7 @@ public:
     cin.ignore();
     getline(cin, category);
 
+    MenuItem newItem(itemID, name, price, quantity, category);
     // Add ingredients for this menu item
     int numIngredients;
     cout << "Enter the number of ingredients for this item: ";
@@ -177,16 +203,17 @@ public:
         cin >> ingredientLowStockThreshold;
 
         Ingredient ingredient{ingredientName, ingredientQuantity, ingredientCostPerUnit, ingredientLowStockThreshold};
-
-        // Add the ingredient to the menu item's ingredients list
-        menuItem.ingredients.push_back(ingredient);
-    }
+        newItem.addIngredient(ingredient);
+       
+        }
 
     // Add the new menu item to the menu
     menu.push_back(menuItem);
 
     cout << "Menu Item added successfully!\n";
 }
+
+
     void decrementMenuItemQuantity(int itemID, int quantityToSubtract) {
         for (MenuItem& menuItem : menu) {
             if (menuItem.itemID == itemID) {
@@ -236,11 +263,10 @@ public:
         cout << "Enter Quantity to Add: ";
         cin >> restockQuantity;
 
-        for (MenuItem& menuItem : menu) {
+       for (MenuItem& menuItem : menu) {
             if (menuItem.itemID == restockItemID) {
                 menuItem.quantity += restockQuantity;
                 cout << "Menu item restocked successfully!\n";
-                saveSalesToFile("sales.txt", -restockQuantity*menuItem.price, loadPreviousIncome());
                 return;
             }
         }
@@ -458,7 +484,7 @@ public:
 
 class BusinessManager {
 public:
-
+    MenuManager menuManager;
     void loadSalesFromFile(const string& filename, double& totalSales) {
         ifstream file(filename);
         if (!file) {
@@ -586,30 +612,6 @@ public:
 
             cout << "Enter Quantity: ";
             cin >> quantity;
-            for (const MenuItem& menuItem : menu) {
-                if (menuItem.name == itemName) {
-                    totalPrice = quantity*menuItem.price;
-                }
-                if(itemName=="Cheeseburger"){
-                   ingredients[0].quantity-=quantity; ingredients[2].quantity-=quantity;
-                   ingredients[3].quantity-=quantity; ingredients[4].quantity-=quantity;
-                   ingredients[7].quantity-=quantity;
-                }
-                if(itemName=="Spaggeti"){
-                    ingredients[0].quantity-=quantity; ingredients[1].quantity-=quantity;
-                    ingredients[2].quantity-=quantity; ingredients[3].quantity-=quantity;
-                    ingredients[6].quantity-=quantity;
-                }
-                if(itemName=="Beefsoup"){
-                   ingredients[0].quantity-=quantity; ingredients[2].quantity-=quantity;
-                   ingredients[3].quantity-=quantity; ingredients[4].quantity-=quantity;
-                }
-                if(itemName=="Vegansoup"){
-                   ingredients[0].quantity-=quantity; ingredients[2].quantity-=quantity;
-                   ingredients[3].quantity-=quantity; ingredients[5].quantity-=quantity;
-                }
-            }
-
             // Check if the item exists in the menu
             bool itemFound = false;
             for (const MenuItem& menuItem : menu) {
