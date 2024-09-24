@@ -137,7 +137,7 @@ Here you will find the contact information of each group members.
     - GitHub:https://github.com/michailS17
 5. MichaelWorkineh
     - Email:micwor96@gmail.com
-    - Telegram:@MicWor
+    - Telegram:
     - GitHub:https://github.com/mugFace
 6. Mikiyas Alemayehu Mekonen
     - Email:
